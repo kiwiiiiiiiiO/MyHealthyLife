@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title> Welcome to MyHealthyLife! </title>
+  <style>
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  html {
+    font-family: "Roboto Mono";
+    font-size: 24px;
+    scroll-behavior: smooth;
+  }
+  section {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    text-align: center;
+    background-color: gray;
+  }
+  .sectionDiv{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;    
+    align-items: center;
+  }
+  .sectionWord{
+    background-color: rgb(14, 162, 147,0.5);
+    width: 80%;
+    height: 70%;
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;    
+    text-align:center;
+  }
+  #home{
+    background-image: url("homeDiv.jpeg");
+    background-size: cover;
+  }
+  #about {
+    background-color: white;
+  }
+  #function {
+    background-color: white;
+  }
+  #calculate {
+    background-color: white;
+  }
+  #team {
+    background-color: pink;
+  }
+  nav {
+    position: sticky;
+    top: 0;
+    background-color: white;
+    box-shadow: 0 10px 25px rgba(92, 99, 105, .2);
+  }
+  nav .container {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    height: 80px;
+    text-align: left;
+    padding: 10px;
+  }
+  nav .container ul li {
+    display: inline-block;
+  }
+  nav .container ul li a {
+    display: inline-block;
+    text-decoration: none;
+    padding: 10px 20px;
+    color: black;
+  }
+  nav .container ul li.active {
+    background-color: #0EA293;
+    transition: 0.3s ease background-color;
+  }
+  nav .container ul li.active a {
+    color: rgb(255, 255, 255);
+  }
+  .signin{
+    float: right;
+  }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="container">
+      <ul>
+        <li class="home active"><a href="#home">MyHealthyLife</a></li>
+        <li class="about"><a href="#about">介紹</a></li>
+        <li class="function"><a href="#function">功能</a></li>
+        <li class="calculate"><a href="#calculate">計算</a></li>
+        <li class="team"><a href="#team">團隊</a></li>
+        <li class="signin"><a href="signin.html">登入/註冊</a></li>
+      </ul>
+    </div>
+  </nav>
+  <section id="home">
+    <div class="sectionDiv">
+      <div class="sectionWord">
+        <h1 > My Healthy Life</h1>
+        <a >幫助您找回健康生活。</a>
+      </div>
+    </div>
+  </section>
+  <section id="about">
+    <div class="sectionDiv">
+      <div class="sectionWord">
+        <h1 > About </h1>
+      </div>
+    </div>
+  </section>
+  <section id="function">
+    <div class="sectionDiv">
+      <div class="sectionWord">
+        <h1 > 功能 </h1>
+      </div>
+    </div>
+  </section>
+  <section id="calculate">
+    <div class="sectionDiv">
+      <div class="sectionWord">
+        <h1 > 如何計算？ </h1>
+      </div>
+    </div>
+  </section> 
+  <section id="team">
+    <div class="sectionDiv">
+      <div class="sectionWord">
+        <h1 > 團隊成員 </h1>
+      </div>
+    </div>
+  </section> 
+  </body>
+
+  <script>
+    const sections = document.querySelectorAll("section");
+    const navLi = document.querySelectorAll("nav .container ul li");
+    window.addEventListener("scroll", () => {
+    let current = "";
+    sections.forEach((section) => {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.clientHeight;
+      if (pageYOffset >= sectionTop - sectionHeight / 3) {
+        current = section.getAttribute("id");
+      }
+    });
+    navLi.forEach((li) => {
+      li.classList.remove("active");
+      if (li.classList.contains(current)) {
+        li.classList.add("active");
+      }
+    });
+  });
+ </script>
+
+</html>

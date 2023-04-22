@@ -4,6 +4,7 @@ const calendar = document.querySelector(".calendar"),
     prev = document.querySelector(".prev"),
     next = document.querySelector(".next"),
     todayBtn = document.querySelector(".today-btn"),
+    exerciseSuggestBtn = document.querySelector(".exerciseSuggest-btn")
     gotoBtn = document.querySelector(".goto-btn"),
     dateInput = document.querySelector(".date-input"),
     eventDay = document.querySelector(".event-day"),
@@ -178,6 +179,10 @@ todayBtn.addEventListener("click", () => {
     month = today.getMonth();
     year = today.getFullYear();
     initCalendar();
+});
+
+exerciseSuggestBtn.addEventListener("click", () => {
+    
 });
 
 dateInput.addEventListener("input", (e) => {

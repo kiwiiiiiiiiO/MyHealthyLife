@@ -18,10 +18,12 @@ const calendar = document.querySelector(".calendar"),
     addEventSubmit = document.querySelector(".add-event-btn "),
     totalCaloryDiv = document.querySelector(".total-calory");
 
+
 let today = new Date();
 let activeDay;
 let month = today.getMonth();
 let year = today.getFullYear();
+let waterLevel = 0;
 
 const months = [
     "January",
@@ -415,4 +417,27 @@ function getEvents() {
         return;
     }
     eventsArr.push(...JSON.parse(localStorage.getItem("events")));
+}
+
+const waterLevelDisplay = document.getElementById('waterLevelDisplay');
+waterLevelDisplay.textContent = `當前水量：${waterLevel} 毫升`;
+
+function showModal() {
+    const addWaterModal = document.getElementById('addWaterModal');
+    addWaterModal.style.display = 'block';
+}
+
+function submitForm(event) {
+    event.preventDefault();
+    const waterLevelInput = document.getElementById('waterLevel');
+    const waterToAdd = Number(waterLevelInput.value);
+    waterLevel += waterToAdd;
+    waterLevelDisplay.textContent = `當前水量：${waterLevel} 毫升`;
+    waterLevelInput.value = 0;
+    hideModal();
+}
+
+function hideModal() {
+    const addWaterModal = document.getElementById('addWaterModal');
+    addWaterModal.style.display = 'none';
 }

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>使用者介面</title>
+	<style>
+		* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  html {
+    font-family: "Roboto Mono";
+    font-size: 24px;
+    scroll-behavior: smooth;
+  }
+		nav {
+			position: sticky;
+			top: 0;
+			background-color: white;
+			box-shadow: 0 10px 25px rgba(92, 99, 105, .2);
+		}
+
+		nav .container {
+			width: 100%;
+			max-width: 1000px;
+			margin: 0 auto;
+			height: 80px;
+			text-align: left;
+			padding: 10px;
+		}
+
+		nav .container ul li {
+			display: inline-block;
+		}
+
+		nav .container ul li a {
+			display: inline-block;
+			text-decoration: none;
+			padding: 10px 20px;
+			color: black;
+		}
+
+		nav .container ul li.active {
+			background-color: #0EA293;
+			transition: 0.3s ease background-color;
+		}
+
+		nav .container ul li.active a {
+			color: rgb(255, 255, 255);
+		}
+
+		.signin {
+			float: right;
+		}
+	</style>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+	
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	
+</head>
+
+<body>
+	<header>
+		<div>
+
+			<nav>
+				<div class="container">
+					<ul>
+						<li class="home active"><a href="#home">MyHealthyLife</a></li>
+						<li class="about"><a href="#about">運動日記</a></li>
+						<li class="function"><a href="#function">食物日記</a></li>
+						<li class="calculate"><a href="chart.html">統計報表</a></li>
+						<li class="team"><a href="personal_edit.html">使用者設定</a></li>
+						<li class="signin"><a href="signin.html">登出</a></li>
+					</ul>
+				</div>
+			</nav>
+			<!-- <div class="dropdown">
+				
+				<nav>
+					<a href="#" style="color:#fff">說明</a>
+					<a href="#" style="color:#fff">登出</a>
+				</nav>
+			</div> -->
+	</header>
+	<main>
+		<h2>每日摘要</h2>
+		<p>您今天攝取了:香蕉(100Kcal)，拉麵(1200Kcal)，水(1000cc)</p>
+		<p>您今天運動了:慢跑，游泳</p>
+		<p>今天剩餘消耗卡路里: 1800 | 1500+100+1200-1000=1800</p>
+		<h2>體重計錄</h2>
+		<canvas id="BMIChart" style="width:50%;max-width:500px;height:50%;max-height:200px;"></canvas>
+
+	</main>
+
+</body>
+<script>
+	var ctx = document.getElementById('BMIChart').getContext('2d');
+	var myChart = new Chart(ctx, {
+		type: 'line',
+		data: {
+			labels: ['星期一', '星期二', '星期三', '星期四', '星期五', '星期六', '星期日'],
+			datasets: [{
+				label: '一周體重報表',
+				data: [75, 75.5, 75, 74, 74.5, 75, 75],
+				backgroundColor: 'rgba(255, 99, 132, 0.2)',
+				borderColor: 'rgba(255, 99, 132, 1)',
+				width: '100px',
+				borderWidth: 1
+			}]
+		},
+		options: {
+			scales: {
+				yAxes: [{
+					ticks: {
+						beginAtZero: true,
+						callback: function (value, index, values) {
+							return value + ' kg/m²';
+						}
+					}
+				}]
+			}
+		}
+	});
+</script>
+
+</html>

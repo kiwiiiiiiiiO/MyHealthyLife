@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>My Chart</title>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+	<!-- Popper JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+	<!-- Bootstrap JS -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<script>
+		function ShowBMI() {
+			BMIChart.style.display = "block";
+			WeightChart.style.display = "none";
+			CaloriesChart.style.display = "none";
+			HeatChart.style.display = "none";
+			a.style.color = "black";
+			c.style.color = "gray";
+			d.style.color = "gray";
+			b.style.color = "gray";
+		}
+		function ShowWeight() {
+			BMIChart.style.display = "none";
+			WeightChart.style.display = "block";
+			CaloriesChart.style.display = "none";
+			HeatChart.style.display = "none";
+			b.style.color = "black";
+			a.style.color = "gray";
+			c.style.color = "gray";
+			d.style.color = "gray";
+		}
+		function ShowCalories() {
+			BMIChart.style.display = "none";
+			WeightChart.style.display = "none";
+			CaloriesChart.style.display = "block";
+			HeatChart.style.display = "none";
+			c.style.color = "black";
+			a.style.color = "gray";
+			d.style.color = "gray";
+			b.style.color = "gray";
+		}
+		function ShowHeat() {
+			BMIChart.style.display = "none";
+			WeightChart.style.display = "none";
+			CaloriesChart.style.display = "none";
+			HeatChart.style.display = "block";
+			d.style.color = "black";
+			c.style.color = "gray";
+			a.style.color = "gray";
+			b.style.color = "gray";
+		}
+	</script>
+	<style>
+		* {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-family: "Roboto Mono";
+            font-size: 24px;
+            scroll-behavior: smooth;
+        }
+		 nav {
+            position: sticky;
+            top: 0;
+            background-color: white;
+            box-shadow: 0 10px 25px rgba(92, 99, 105, .2);
+        }
+
+        nav .container {
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+            height: 80px;
+            text-align: left;
+            padding: 10px;
+        }
+
+        nav .container ul li {
+            display: inline-block;
+        }
+
+        nav .container ul li a {
+            display: inline-block;
+            text-decoration: none;
+            padding: 10px 20px;
+            color: black;
+        }
+
+        nav .container ul li.active {
+            background-color: #0EA293;
+            transition: 0.3s ease background-color;
+        }
+
+        nav .container ul li.active a {
+            color: rgb(255, 255, 255);
+        }
+	</style>
+</head>
+
+<body>
+	<header>
+		<nav>
+			<div class="container">
+				<ul>
+					<li class="home "><a href="home.html">MyHealthyLife</a></li>
+					<li class="about"><a href="#about">運動日記</a></li>
+					<li class="function"><a href="#function">食物日記</a></li>
+					<li class="calculate active"><a href="chart.html">統計報表</a></li>
+					<li class="team"><a href="personal_edit.html">使用者設定</a></li>
+					<li class="signin"><a href="signin.html">登出</a></li>
+				</ul>
+			</div>
+		</nav>
+		
+	</header>
+	<!-- Chart -->
+	<main>
+		<nav class="navbar navbar-expand-lg navbar-light bg-light " style="background:#000000;">
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+				aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav">
+					<li class="nav-item active">
+						<a class="nav-link" id="a" onclick="ShowBMI()" style="cursor: pointer;">BMI報表</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" id="b" onclick="ShowWeight()" style="cursor: pointer;">體重報表</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" id="c" onclick="ShowCalories()" style="cursor: pointer;">卡路里報表</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" id="d" onclick="ShowHeat()" style="cursor: pointer;">熱量報表</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+	<div style="height: 70%;width: 80%;" class="center">
+		<div></div>
+		<canvas id="BMIChart"></canvas>
+		<canvas id="WeightChart" style="display: none;"></canvas>
+		<canvas id="CaloriesChart" style="display: none;"></canvas>
+		<canvas id="HeatChart" style="display: none;"></canvas>
+	</div>
+	<div>
+		<button>周</button>
+		<button>月</button>
+		<button>年</button>
+	</div>
+</main>
+	<!-- Script -->
+	<script>
+		var ctx = document.getElementById('BMIChart').getContext('2d');
+		var myChart = new Chart(ctx, {
+			type: 'line',
+			data: {
+				labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+				datasets: [{
+					label: 'BMI報表',
+					data: [12, 19, 3, 5, 2, 3, 14],
+					backgroundColor: 'rgba(255, 99, 132, 0.2)',
+					borderColor: 'rgba(255, 99, 132, 1)',
+					borderWidth: 1
+				}]
+			},
+			options: {
+				scales: {
+					yAxes: [{
+						ticks: {
+							beginAtZero: true,
+							callback: function (value, index, values) {
+								return value + ' kg/m²';
+							}
+						}
+					}]
+				}
+			}
+		});
+	</script>
+	<script>
+		var ctx = document.getElementById('WeightChart').getContext('2d');
+		var myChart = new Chart(ctx, {
+			type: 'line',
+			data: {
+				labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+				datasets: [{
+					label: '體重報表',
+					data: [12, 19, 3, 5, 2, 3, 14],
+					backgroundColor: 'rgba(255, 99, 132, 0.2)',
+					borderColor: 'rgba(255, 99, 132, 1)',
+					borderWidth: 1
+				}]
+			},
+			options: {
+				scales: {
+					yAxes: [{
+						ticks: {
+							beginAtZero: true
+						}
+					}]
+				}
+			}
+		});
+	</script>
+	<script>
+		var ctx = document.getElementById('CaloriesChart').getContext('2d');
+		var myChart = new Chart(ctx, {
+			type: 'line',
+			data: {
+				labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+				datasets: [{
+					label: '卡路里報表',
+					data: [12, 19, 3, 5, 2, 3, 14],
+					backgroundColor: 'rgba(255, 99, 132, 0.2)',
+					borderColor: 'rgba(255, 99, 132, 1)',
+					borderWidth: 1
+				}]
+			},
+			options: {
+				scales: {
+					yAxes: [{
+						ticks: {
+							beginAtZero: true
+						}
+					}]
+				}
+			}
+		});
+	</script>
+	<script>
+		var ctx = document.getElementById('HeatChart').getContext('2d');
+		var myChart = new Chart(ctx, {
+			type: 'line',
+			data: {
+				labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+				datasets: [{
+					label: '熱量報表',
+					data: [12, 19, 3, 5, 2, 3, 14],
+					backgroundColor: 'rgba(255, 99, 132, 0.2)',
+					borderColor: 'rgba(255, 99, 132, 1)',
+					borderWidth: 1
+				}]
+			},
+			options: {
+				scales: {
+					yAxes: [{
+						ticks: {
+							beginAtZero: true
+						}
+					}]
+				}
+			}
+		});
+	</script>
+</body>
+
+</html>

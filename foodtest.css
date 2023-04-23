@@ -638,3 +638,9 @@ body {
 .credits a:hover {
     text-decoration: underline;
 }
+
+#chartPic {
+    height: 50px;
+    width: 50px;
+    filter: invert(100%);
+}

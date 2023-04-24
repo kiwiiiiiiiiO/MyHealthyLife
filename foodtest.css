@@ -656,7 +656,10 @@ body {
     margin: 15% auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 80%;
+    width: 500px;
+    color: #0EA293;
+    font-size: 20px;
+    border-radius: 10px;
 }
 
 .modal input[type=number] {
@@ -667,7 +670,7 @@ body {
     border: 2px solid #ccc;
     border-radius: 4px;
     background-color: #f8f8f8;
-    font-size: 16px;
+    font-size: 20px;
 }
 
 .modal button[type=submit],

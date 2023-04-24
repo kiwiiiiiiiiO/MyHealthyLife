@@ -419,6 +419,7 @@ function getEvents() {
     eventsArr.push(...JSON.parse(localStorage.getItem("events")));
 }
 
+//add waterLevel with modal
 const waterLevelDisplay = document.getElementById('waterLevelDisplay');
 waterLevelDisplay.textContent = `當前水量：${waterLevel} 毫升`;
 
@@ -442,7 +443,7 @@ function hideModal() {
     addWaterModal.style.display = 'none';
 }
 
-
+//add calory
 const input = document.getElementById('calory');
 const display = document.getElementById('caloryLevelDisplay');
 let totalCalory = 0;

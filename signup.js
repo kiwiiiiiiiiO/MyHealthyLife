@@ -14,9 +14,6 @@ function showTab(n) {
   if (n == (x.length - 1)) {
     document.getElementById("nextBtn").innerHTML = "送出";  
     var btn = document.getElementById("nextBtn");
-    btn.addEventListener('click', function (e) {
-      window.location.href = "Welcome.html";
-    });
   } else {
     document.getElementById("nextBtn").innerHTML = "繼續";
   }
@@ -37,6 +34,7 @@ function nextPrev(n) {
   if (currentTab >= x.length) {
     // ... the form gets submitted:
     document.getElementById("regForm").submit();
+    window.location.href = "Welcome.html";
     return false;
   }
   // Otherwise, display the correct tab:
@@ -74,3 +72,22 @@ function fixStepIndicator(n) {
   //... and adds the "active" class on the current step:
   x[n].className += " active";
 }
+
+var btn = document.getElementsByClassName("btn_1");
+for(var i=0; i< btn.length;i++){
+  btn[i].addEventListener('click', function (e) {
+    var ID = e.id;
+    e.target.style.backgroundColor = '#0EA293';
+    e.target.style.color = 'white';
+    for(var i=0; i< btn.length;i++){
+      if(btn[i].id != ID){
+        btn[i].style.backgroundColor = 'white';
+        btn[i].style.color = '#0EA293';
+      }
+    }
+  }
+)}
+
+
+
+

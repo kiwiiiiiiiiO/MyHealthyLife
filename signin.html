@@ -10,6 +10,22 @@
         margin: 0;
         box-sizing: border-box;
     }
+    body{
+        position: relative;
+        background-image: url("yoga.jpg");
+        size: cover;
+    }
+    body::after{
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        height:100%;
+        width:100%;
+        background-color: white;
+        opacity: .3;
+        z-index: -1;
+    }
     .FormDiv{
         display: flex;
         justify-content: center;
@@ -101,11 +117,13 @@
         cursor: pointer;
         font-size: 16px;
         margin-top: 20px;
+        transition: 0.5s;
         margin-bottom: 50px;
     }
     .signinBtn:hover {
         background-color: #5FDAC9;
         transform: translateY(-2px);
+        box-shadow: 0 5px 20px rgba(92, 99, 105,0.4);
     }
     .signinDiv{
         display: flex;
@@ -114,8 +132,8 @@
     nav{
         position: sticky;
         top: 0;
+        font-weight:bold;
         background-color: white;
-        font-family: "Roboto Mono";
         font-size: 24px;
         height: 80px;
         box-shadow: 0 5px 20px rgba(92, 99, 105, .2);

@@ -5,15 +5,22 @@
 	<title>使用者介面</title>
 	<style>
 		* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-  }
-  html {
-    font-family: "Roboto Mono";
-    font-size: 24px;
-    scroll-behavior: smooth;
-  }
+			padding: 0;
+			margin: 0;
+			box-sizing: border-box;
+		}
+
+		html {
+			font-family: "Roboto Mono";
+			font-size: 24px;
+			scroll-behavior: smooth;
+		}
+
+		.center {
+			margin-left: auto;
+			margin-right: auto;
+		}
+
 		nav {
 			position: sticky;
 			top: 0;
@@ -58,14 +65,14 @@
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-	
+
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 
-	
+
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-	
+
 </head>
 
 <body>
@@ -93,13 +100,14 @@
 			</div> -->
 	</header>
 	<main>
-		<h2>每日摘要</h2>
-		<p>您今天攝取了:香蕉(100Kcal)，拉麵(1200Kcal)，水(1000cc)</p>
-		<p>您今天運動了:慢跑，游泳</p>
-		<p>今天剩餘消耗卡路里: 1800 | 1500+100+1200-1000=1800</p>
-		<h2>體重計錄</h2>
-		<canvas id="BMIChart" style="width:50%;max-width:500px;height:50%;max-height:200px;"></canvas>
-
+		<div style="padding-left: 50px;">
+			<h2>每日摘要</h2>
+			<p>您今天攝取了:香蕉(100Kcal)，拉麵(1200Kcal)，水(1000cc)</p>
+			<p>您今天運動了:慢跑(1000Kcal)，游泳(600Kcal)</p>
+			<p>今天剩餘消耗卡路里: 1800 | 1500+100+1200-1000-600=1200</p>
+			<h2>體重計錄</h2>
+			<canvas id="BMIChart" style="width:50%;max-width:500px;height:50%;max-height:200px;"></canvas>
+		</div>
 	</main>
 
 </body>
@@ -119,17 +127,25 @@
 			}]
 		},
 		options: {
-			scales: {
-				yAxes: [{
-					ticks: {
-						beginAtZero: true,
-						callback: function (value, index, values) {
-							return value + ' kg/m²';
+				responsive: true,
+				scales: {
+					y: {
+						display: true,
+						title: {
+							display: true,
+							text: '體重(kg)',
+							color: '#191',
+							font: {
+								family: 'Times',
+								size: 20,
+								style: 'normal',
+								lineHeight: 1.2
+							},
+							padding: { top: 30, left: 0, right: 0, bottom: 0 }
 						}
 					}
-				}]
-			}
-		}
+				}
+			},
 	});
 </script>
 

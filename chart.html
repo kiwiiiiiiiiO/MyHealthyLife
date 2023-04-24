@@ -21,6 +21,7 @@
 			WeightChart.style.display = "none";
 			CaloriesChart.style.display = "none";
 			HeatChart.style.display = "none";
+			HeatTable.style.display = "none";
 			a.style.color = "black";
 			c.style.color = "gray";
 			d.style.color = "gray";
@@ -31,6 +32,7 @@
 			WeightChart.style.display = "block";
 			CaloriesChart.style.display = "none";
 			HeatChart.style.display = "none";
+			HeatTable.style.display = "none";
 			b.style.color = "black";
 			a.style.color = "gray";
 			c.style.color = "gray";
@@ -41,6 +43,7 @@
 			WeightChart.style.display = "none";
 			CaloriesChart.style.display = "block";
 			HeatChart.style.display = "none";
+			HeatTable.style.display = "none";
 			c.style.color = "black";
 			a.style.color = "gray";
 			d.style.color = "gray";
@@ -51,6 +54,7 @@
 			WeightChart.style.display = "none";
 			CaloriesChart.style.display = "none";
 			HeatChart.style.display = "block";
+			HeatTable.style.display = "block";
 			d.style.color = "black";
 			c.style.color = "gray";
 			a.style.color = "gray";
@@ -59,51 +63,74 @@
 	</script>
 	<style>
 		* {
-            padding: 0;
-            margin: 0;
-            box-sizing: border-box;
-        }
+			padding: 0;
+			margin: 0;
+			box-sizing: border-box;
+		}
 
-        html {
-            font-family: "Roboto Mono";
-            font-size: 24px;
-            scroll-behavior: smooth;
-        }
-		 nav {
-            position: sticky;
-            top: 0;
-            background-color: white;
-            box-shadow: 0 10px 25px rgba(92, 99, 105, .2);
-        }
+		html {
+			font-family: "Roboto Mono";
+			font-size: 24px;
+			scroll-behavior: smooth;
+		}
 
-        nav .container {
-            width: 100%;
-            max-width: 1000px;
-            margin: 0 auto;
-            height: 80px;
-            text-align: left;
-            padding: 10px;
-        }
+		.center {
+			margin-left: auto;
+			margin-right: auto;
+		}
 
-        nav .container ul li {
-            display: inline-block;
-        }
+		table {
+			font-family: arial, sans-serif;
+			border-collapse: collapse;
 
-        nav .container ul li a {
-            display: inline-block;
-            text-decoration: none;
-            padding: 10px 20px;
-            color: black;
-        }
+		}
 
-        nav .container ul li.active {
-            background-color: #0EA293;
-            transition: 0.3s ease background-color;
-        }
+		td,
+		th {
+			border: 1px solid #E2E3EE;
+			text-align: left;
+			padding: 8px;
+		}
 
-        nav .container ul li.active a {
-            color: rgb(255, 255, 255);
-        }
+		tr:nth-child(even) {
+			background-color: #A6ABD6;
+		}
+
+		nav {
+			position: sticky;
+			top: 0;
+			background-color: white;
+			box-shadow: 0 10px 25px rgba(92, 99, 105, .2);
+		}
+
+		nav .container {
+			width: 100%;
+			max-width: 1000px;
+			margin: 0 auto;
+			height: 80px;
+			text-align: left;
+			padding: 10px;
+		}
+
+		nav .container ul li {
+			display: inline-block;
+		}
+
+		nav .container ul li a {
+			display: inline-block;
+			text-decoration: none;
+			padding: 10px 20px;
+			color: black;
+		}
+
+		nav .container ul li.active {
+			background-color: #0EA293;
+			transition: 0.3s ease background-color;
+		}
+
+		nav .container ul li.active a {
+			color: rgb(255, 255, 255);
+		}
 	</style>
 </head>
 
@@ -121,7 +148,7 @@
 				</ul>
 			</div>
 		</nav>
-		
+
 	</header>
 	<!-- Chart -->
 	<main>
@@ -142,51 +169,100 @@
 						<a class="nav-link" id="c" onclick="ShowCalories()" style="cursor: pointer;">卡路里報表</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" id="d" onclick="ShowHeat()" style="cursor: pointer;">熱量報表</a>
+						<a class="nav-link" id="d" onclick="ShowHeat()" style="cursor: pointer;">熱量赤字報表</a>
 					</li>
 				</ul>
 			</div>
 		</nav>
-	<div style="height: 70%;width: 80%;" class="center">
-		<div></div>
-		<canvas id="BMIChart"></canvas>
-		<canvas id="WeightChart" style="display: none;"></canvas>
-		<canvas id="CaloriesChart" style="display: none;"></canvas>
-		<canvas id="HeatChart" style="display: none;"></canvas>
-	</div>
-	<div>
-		<button>周</button>
-		<button>月</button>
-		<button>年</button>
-	</div>
-</main>
+		<div style="height: 70%;width: 80%;" class="center">
+			<div></div>
+			<canvas id="BMIChart"></canvas>
+			<canvas id="WeightChart" style="display: none;"></canvas>
+			<canvas id="CaloriesChart" style="display: none;"></canvas>
+			<canvas id="HeatChart" style="display: none;"></canvas>
+			<div>
+				<button>周</button>
+				<button>月</button>
+				<button>年</button>
+			</div>
+			<div>
+				<table id="HeatTable" style="display: none;" class="center-table">
+					<tr style="background-color: #3241B8">
+						<td>日期</td>
+						<td>TDEE</td>
+						<td>食物攝取</td>
+						<td>運動消耗</td>
+						<td>5本日熱量盈虧</td>
+					</tr>
+					<tr>
+						<td>2023/03/30</td>
+						<td>1258</td>
+						<td>1300</td>
+						<td>238</td>
+						<td>盈</td>
+					</tr>
+					<tr>
+						<td>2023/03/31</td>
+						<td>1258</td>
+						<td>1300</td>
+						<td>238</td>
+						<td>盈</td>
+					</tr>
+					<tr>
+						<td>2023/04/01</td>
+						<td>1258</td>
+						<td>1022</td>
+						<td>882</td>
+						<td>盈</td>
+					</tr>
+					<tr>
+						<td>2023/04/02</td>
+						<td>1258</td>
+						<td>985</td>
+						<td>368</td>
+						<td>盈</td>
+					</tr>
+				</table>
+			</div>
+
+		</div>
+
+	</main>
 	<!-- Script -->
 	<script>
 		var ctx = document.getElementById('BMIChart').getContext('2d');
 		var myChart = new Chart(ctx, {
 			type: 'line',
 			data: {
-				labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+				labels: ['一月', '二月', '三月', '四月', '五月', '六月', '七月'],
 				datasets: [{
 					label: 'BMI報表',
-					data: [12, 19, 3, 5, 2, 3, 14],
+					data: [23, 23, 24, 24, 23, 22, 23],
 					backgroundColor: 'rgba(255, 99, 132, 0.2)',
 					borderColor: 'rgba(255, 99, 132, 1)',
 					borderWidth: 1
 				}]
 			},
 			options: {
+				responsive: true,
 				scales: {
-					yAxes: [{
-						ticks: {
-							beginAtZero: true,
-							callback: function (value, index, values) {
-								return value + ' kg/m²';
-							}
+					y: {
+						display: true,
+						title: {
+							display: true,
+							text: 'BMI 體重(kg) / 身高*2(m*2)',
+							color: '#191',
+							font: {
+								family: 'Times',
+								size: 20,
+								style: 'normal',
+								lineHeight: 1.2
+							},
+							padding: { top: 30, left: 0, right: 0, bottom: 0 }
 						}
-					}]
+					}
 				}
-			}
+			},
 		});
 	</script>
 	<script>
@@ -194,49 +270,93 @@
 		var myChart = new Chart(ctx, {
 			type: 'line',
 			data: {
-				labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+				labels: ['星期一', '星期二', '星期三', '星期四', '星期五', '星期六', '星期日'],
 				datasets: [{
 					label: '體重報表',
-					data: [12, 19, 3, 5, 2, 3, 14],
+					data: [75, 75.5, 75, 74, 74.5, 75, 75],
 					backgroundColor: 'rgba(255, 99, 132, 0.2)',
 					borderColor: 'rgba(255, 99, 132, 1)',
 					borderWidth: 1
 				}]
 			},
 			options: {
+				responsive: true,
 				scales: {
-					yAxes: [{
-						ticks: {
-							beginAtZero: true
+					y: {
+						display: true,
+						title: {
+							display: true,
+							text: '體重(kg)',
+							color: '#191',
+							font: {
+								family: 'Times',
+								size: 20,
+								style: 'normal',
+								lineHeight: 1.2
+							},
+							padding: { top: 30, left: 0, right: 0, bottom: 0 }
 						}
-					}]
+					}
 				}
-			}
+			},
 		});
 	</script>
 	<script>
 		var ctx = document.getElementById('CaloriesChart').getContext('2d');
 		var myChart = new Chart(ctx, {
-			type: 'line',
+			type: 'bar',
 			data: {
-				labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+				labels: ['星期一', '星期二', '星期三', '星期四', '星期五', '星期六', '星期日'],
 				datasets: [{
-					label: '卡路里報表',
-					data: [12, 19, 3, 5, 2, 3, 14],
+					label: '相減總和',
+					data: [2, -3, -10, -10, -20, -10, 10],
 					backgroundColor: 'rgba(255, 99, 132, 0.2)',
 					borderColor: 'rgba(255, 99, 132, 1)',
 					borderWidth: 1
+				}, {
+					label: '增加的卡路里',
+					data: [7, 11, 5, 8, 3, 7, 29],
+					type: 'line',
+					fill: false,
+					borderColor: 'rgba(54, 162, 235, 1)',
+					pointBackgroundColor: 'rgba(54, 162, 235, 1)',
+					pointBorderColor: 'rgba(54, 162, 235, 1)',
+					pointRadius: 5,
+					pointHoverRadius: 10,
+					showLine: true
+				}, {
+					label: '減少的卡路里',
+					data: [5, 14, 15, 18, 23, 17, 19],
+					type: 'line',
+					fill: false,
+					borderColor: 'green',
+					pointBackgroundColor: 'green',
+					pointBorderColor: 'green',
+					pointRadius: 5,
+					pointHoverRadius: 10,
+					showLine: true
 				}]
 			},
 			options: {
+				responsive: true,
 				scales: {
-					yAxes: [{
-						ticks: {
-							beginAtZero: true
+					y: {
+						display: true,
+						title: {
+							display: true,
+							text: '攝取的卡路里(Kcal)',
+							color: '#191',
+							font: {
+								family: 'Times',
+								size: 20,
+								style: 'normal',
+								lineHeight: 1.2
+							},
+							padding: { top: 30, left: 0, right: 0, bottom: 0 }
 						}
-					}]
+					}
 				}
-			}
+			},
 		});
 	</script>
 	<script>
@@ -244,24 +364,35 @@
 		var myChart = new Chart(ctx, {
 			type: 'line',
 			data: {
-				labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+				labels: ['2023/03/30', '2023/03/31', '2023/04/01', '2023/04/02'],
 				datasets: [{
-					label: '熱量報表',
-					data: [12, 19, 3, 5, 2, 3, 14],
+					label: '熱量赤字報表',
+					data: [12, 19, 3, 5],
 					backgroundColor: 'rgba(255, 99, 132, 0.2)',
 					borderColor: 'rgba(255, 99, 132, 1)',
 					borderWidth: 1
 				}]
 			},
 			options: {
+				responsive: true,
 				scales: {
-					yAxes: [{
-						ticks: {
-							beginAtZero: true
+					y: {
+						display: true,
+						title: {
+							display: true,
+							text: '熱量盈虧',
+							color: '#191',
+							font: {
+								family: 'Times',
+								size: 20,
+								style: 'normal',
+								lineHeight: 1.2
+							},
+							padding: { top: 30, left: 0, right: 0, bottom: 0 }
 						}
-					}]
+					}
 				}
-			}
+			},
 		});
 	</script>
 </body>

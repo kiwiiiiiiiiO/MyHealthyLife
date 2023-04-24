@@ -45,7 +45,7 @@
             text-align: center;
         }
 
-       
+
 
 
         fieldset {
@@ -202,11 +202,11 @@
                             <td colspan="2"><strong>喝水量(cc)</strong></td>
                             <td colspan="3"> <input type="range" id="myRange" min="0" max="10000" step="1" value="1500">
                                 <output for="myRange">1500</output>
-        
+
                                 <script>
                                     const range = document.getElementById('myRange');
                                     const output = document.querySelector('output[for="myRange"]');
-        
+
                                     range.addEventListener('input', () => {
                                         output.textContent = range.value;
                                     });
@@ -215,7 +215,15 @@
                         </tr>
                         <tr>
                             <td colspan="2"><strong>減重目標</strong></td>
-                            <td colspan="3"><input value="你的減重目標"></td>
+                            <td colspan="3"><select>
+                                    <option value="option1">減重0.25kg</option>
+                                    <option value="option2">減重0.5kg</option>
+                                    <option value="option3">減重1kg</option>
+                                    <option value="option3">維持體重</option>
+                                    <option value="option3">增重0.25kg</option>
+                                    <option value="option3">增重0.5kg</option>
+                                    <option value="option3">增重1kg</option>
+                                </select></td>
                         </tr>
                         <tr>
                             <td colspan="5"><button onclick="Submit()">修改資料</button></td>
@@ -229,8 +237,3 @@
 </body>
 
 </html>
-
-
-
-
-

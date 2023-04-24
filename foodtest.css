@@ -703,6 +703,7 @@ body {
     flex: 1;
     align-self: stretch;
     font-size: 16px;
+    margin-left: 50px;
 }
 
 .container2 {
@@ -718,7 +719,7 @@ body {
 }
 
 #waterPic {
-    margin-left: 200px;
+    margin-left: 150px;
     height: 50px;
     width: 50px;
     filter: invert(100%);

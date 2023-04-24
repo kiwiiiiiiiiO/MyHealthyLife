@@ -413,6 +413,7 @@ body {
     border-radius: 50%;
     background-color: transparent;
     cursor: pointer;
+
 }
 
 .add-event:hover {
@@ -445,6 +446,7 @@ body {
     background-color: #fff;
     transform: translateX(-50%);
     transition: max-height 0.5s ease;
+    z-index: 3;
 }
 
 .add-event-wrapper.active {
@@ -523,6 +525,8 @@ body {
     align-items: center;
     justify-content: center;
     padding: 20px;
+    position: relative;
+    z-index: 500;
 }
 
 .add-event-footer .add-event-btn {
@@ -707,8 +711,10 @@ body {
 }
 
 .container2 {
+    position: absolute;
     display: flex;
     align-items: flex-start;
+    z-index: 1;
 }
 
 #chartPic {
@@ -719,6 +725,7 @@ body {
 }
 
 #waterPic {
+    position: absolute;
     margin-left: 150px;
     height: 50px;
     width: 50px;

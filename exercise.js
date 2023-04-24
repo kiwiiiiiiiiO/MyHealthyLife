@@ -183,7 +183,7 @@ todayBtn.addEventListener("click", () => {
 
 exerciseSuggestBtn.addEventListener("click", () => {
     let exerciseTime = prompt("請輸入今天能運動的時間(分鐘):D");
-    alert("推薦的運動為: ");
+    alert("推薦的運動為: 慢跑30分鐘");
 });
 
 dateInput.addEventListener("input", (e) => {

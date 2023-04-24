@@ -364,13 +364,13 @@ addEventSubmit.addEventListener("click", () => {
     }
 
     //function to calculate all the calories during that day，還沒成功
-    function totalCalory() {
-        const totalCalory = 0;
-        if (eventCalory != 0) {
-            totalCalory += eventCalory;
-            document.getElementById("total-calory").innerHTML += totalCalory;
-        }
-    }
+    // function totalCalory() {
+    //     const totalCalory = 0;
+    //     if (eventCalory != 0) {
+    //         totalCalory += eventCalory;
+    //         document.getElementById("total-calory").innerHTML += totalCalory;
+    //     }
+    // }
 });
 
 //function to delete event when clicked on event
@@ -450,5 +450,5 @@ let totalCalory = 0;
 input.addEventListener('input', (event) => {
     const value = Number(event.target.value);
     totalCalory += value;
-    display.textContent = `今日飲食熱量 : ${totalCalory} 大卡`;
+    display.textContent = `今日飲食熱量 : ${totalCalory} kcal`;
 });

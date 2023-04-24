@@ -441,3 +441,14 @@ function hideModal() {
     const addWaterModal = document.getElementById('addWaterModal');
     addWaterModal.style.display = 'none';
 }
+
+
+const input = document.getElementById('calory');
+const display = document.getElementById('caloryLevelDisplay');
+let totalCalory = 0;
+
+input.addEventListener('input', (event) => {
+    const value = Number(event.target.value);
+    totalCalory += value;
+    display.textContent = `今日飲食熱量 : ${totalCalory} 大卡`;
+});

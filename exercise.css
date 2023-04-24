@@ -35,6 +35,7 @@ body {
 }
 
 .container {
+    margin-top:100px;
     position: relative;
     width: 1200px;
     min-height: 850px;
@@ -644,3 +645,46 @@ body {
     width: 50px;
     filter: invert(100%);
 }
+
+nav {
+    position: fixed;
+    top: 0;
+    background-color: white;
+    box-shadow: 0 10px 25px rgba(92, 99, 105, .2);
+    width:100%;
+    left:0;
+    z-index:9999;
+   }
+ 
+   nav .containerd {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    height: 80px;
+    text-align: left;
+    padding: 10px;
+   }
+ 
+   nav .containerd ul li {
+    display: inline-block;
+   }
+ 
+   nav .containerd ul li a {
+    display: inline-block;
+    text-decoration: none;
+    padding: 10px 20px;
+    color: black;
+   }
+ 
+   nav .containerd ul li.active {
+    background-color: #0EA293;
+    transition: 0.3s ease background-color;
+   }
+ 
+   nav .containerd ul li.active a {
+    color: rgb(255, 255, 255);
+   }
+ 
+   .signin {
+    float: right;
+   }

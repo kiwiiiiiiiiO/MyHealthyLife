@@ -28,7 +28,7 @@
 			box-shadow: 0 10px 25px rgba(92, 99, 105, .2);
 		}
 
-		nav .container {
+		nav .containerd {
 			width: 100%;
 			max-width: 1000px;
 			margin: 0 auto;
@@ -37,23 +37,23 @@
 			padding: 10px;
 		}
 
-		nav .container ul li {
+		nav .containerd ul li {
 			display: inline-block;
 		}
 
-		nav .container ul li a {
+		nav .containerd ul li a {
 			display: inline-block;
 			text-decoration: none;
 			padding: 10px 20px;
 			color: black;
 		}
 
-		nav .container ul li.active {
+		nav .containerd ul li.active {
 			background-color: #0EA293;
 			transition: 0.3s ease background-color;
 		}
 
-		nav .container ul li.active a {
+		nav .containerd ul li.active a {
 			color: rgb(255, 255, 255);
 		}
 
@@ -80,14 +80,14 @@
 		<div>
 
 			<nav>
-				<div class="container">
+				<div class="containerd">
 					<ul>
-						<li class="home active"><a href="#home">MyHealthyLife</a></li>
-						<li class="about"><a href="#about">運動日記</a></li>
-						<li class="function"><a href="#function">食物日記</a></li>
+						<li class="home active"><a href="home.html">MyHealthyLife</a></li>
+						<li class="about"><a href="exercise.html">運動日記</a></li>
+						<li class="function"><a href="foodtest.html">食物日記</a></li>
 						<li class="calculate"><a href="chart.html">統計報表</a></li>
 						<li class="team"><a href="personal_edit.html">使用者設定</a></li>
-						<li class="signin"><a href="signin.html">登出</a></li>
+						<li class="signin"><a href="Welcome.html">登出</a></li>
 					</ul>
 				</div>
 			</nav>
@@ -127,25 +127,25 @@
 			}]
 		},
 		options: {
-				responsive: true,
-				scales: {
-					y: {
+			responsive: true,
+			scales: {
+				y: {
+					display: true,
+					title: {
 						display: true,
-						title: {
-							display: true,
-							text: '體重(kg)',
-							color: '#191',
-							font: {
-								family: 'Times',
-								size: 20,
-								style: 'normal',
-								lineHeight: 1.2
-							},
-							padding: { top: 30, left: 0, right: 0, bottom: 0 }
-						}
+						text: '體重(kg)',
+						color: '#191',
+						font: {
+							family: 'Times',
+							size: 20,
+							style: 'normal',
+							lineHeight: 1.2
+						},
+						padding: { top: 30, left: 0, right: 0, bottom: 0 }
 					}
 				}
-			},
+			}
+		},
 	});
 </script>
 

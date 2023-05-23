@@ -43,11 +43,9 @@ body {
     padding: 5px;
     color: #fff;
     display: flex;
-
     border-radius: 10px;
     background-color: #373c4f;
 }
-
 .left {
     width: 60%;
     padding: 20px;

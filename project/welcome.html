@@ -10,309 +10,21 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Serif:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
- <style>
-  * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: 'Roboto Serif', serif;
-  }
-  html {
-    font-size: 20px;
-    scroll-behavior: smooth;
-  }
-  section {
-    height: 100vh;
-    font-weight: bold;
-    width: 100%;
-    background-color: gray;
-  }
-  h1 {
-    display: block;
-    width: fit-content;
-    font-size: 50px;
-    position: relative;
-  }
-  /* Home Section */
-  #home{
-    background-image: url("homeDiv.jpeg");
-    background-size: cover;
-    position: relative;
-    z-index: 1;
-  }
-  #home::after{
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    height:100%;
-    width:100%;
-    background-color: gray;
-    opacity: 0.5;
-    z-index: -1;
-  }
-  #home h1 {
-    display: block;
-    width: fit-content;
-    font-size: 50px;
-    position: relative;
-  }
-  #home .homeDiv{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;    
-  }
-  #home a{
-    display: inline-block;
-	  padding: 10px 30px;
-	  color: white;
-    font-size: 16px;
-    font-weight: 300;
-	  background-color: rgba(14, 162, 147,.3);
-    text-decoration: none;
-    border-radius: 3px;
-	  border: 2px solid #0EA293;
-	  margin-top: 30px;
-    opacity: 1;
-    transition: 0.5s;
-  }
-  #home a:hover{
-	  color: white;
-	  background-color: #0EA293;
-    opacity: 1;
-    font-weight:bold;
-    border-radius: 6px;
-	  border: 2px solid #0EA293;
-	  margin-top: 30px;
-    box-shadow: 0 10px 25px rgba(92, 99, 105, .5);
-  }
-  /* End of home section */
-  #about {
-    background-color: white;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center; 
-  }
-  #about .aboutWord{
-    width:50%;
-    margin-left: 80px;
-  }
-  #about .aboubImg{
-    width: 50%;
-    background-size: cover;
-  }
-  #about img{
-    position: relative;
-    height: 400px;
-    width: 400px;
-    border-radius: 100%;
-    object-fit: cover;
-    border:7px double  #0EA293;
-  }
-  /* Function Section */
-  #function {
-    background-color: white;
-    height: 100%;
-  }
-  #function .functionDiv{
-    width: 100%;
-    height: 100%;
-    display: flex; 
-    flex-direction: column;
-  }
-  #function h1{
-    margin: 0 auto;
-    width: fit-content;
-  }
-  #function .functionContent{
-    display: flex;
-    flex-direction: row;
-	  flex-wrap: wrap;
-    align-items: center;
-    justify-content: center; 
-    margin-bottom: 100px;
-  }
-  #function img {
-    position: relative;
-    width: 100px;
-    height:100px;
-    top: 10px;
-    left: -38px;
-    margin-left: 100px;
-    object-fit: cover;
-    border-radius: 20%;
-    background-color: rgb(255, 255, 255,0.8);
-    box-shadow: 0 10px 25px rgba(92, 99, 105, .3);
-  }
-  #function .card{
-    margin: 10px;
-    width: 13rem ; 
-    height: 20rem;
-    border-radius: 20%;
-    border: 5px solid #313437bc;
-    background-color: rgb(245, 245, 245);
-    box-shadow: 0 10px 25px rgba(92, 99, 105, .3);
-    transition: 0.3s;
-  }
-  #function .card:hover{
-    box-shadow: 0 10px 25px rgba(92, 99, 105, .8);
-    background-color: rgb(255, 255, 255);
-  }
-  #function .card:hover img{
-    background-color: rgb(14, 162, 147);
-    top: -15px;
-    box-shadow: 0 10px 25px rgba(92, 99, 105, .8);
-    width: 110px;
-    height:110px;
-  }
-  /* End of function Section */
-  #calculate  {
-    background-color: white;
-  }
-  #calculate h1 {
-    margin: 0 auto;
-    display: block;
-    width: fit-content;
-    font-size: 50px;
-    position: relative;
-  }
-  #calculate .calculateContent {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center; 
-    margin-bottom: 100px;
-    margin-left: 100px;
-    margin-right: 100px;
-  }
-  #calculate img{
-    width: 500px;
-    height: 500px;
-    object-fit: fill;
-  }
-  #calculate .carousel-indicators {
-    display: flex;
-    align-items: center;
-    justify-content: center; 
-  }
   
-  #calculate .carousel-indicators li {
-    width: 16px;
-    height: 16px;
-    margin-left: 5px;
-    margin-right: 5px;
-    background-color: #0EA293;
-    border-radius: 50%;
-  }
-  #calculate .carousel-indicators li.active {
-    background-color: #5FDAC9;
-  }
-  #calculate .glyphicon-chevron-left{
-    color: #0EA293;
-  }
-  #calculate .glyphicon-chevron-right{
-    color: #0EA293;
-  }
-  /* Team Section */
-  #team {
-    background-color: white;
-  }
-  #team h1{
-    color:#313437;
-    margin: 0 auto;
-    width: fit-content;
-  }
-  #team .cardDiv{
-    display: flex;
-    flex-direction: row;
-	  flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;   
-  }
-  #team .card{
-    margin:10px;
-    width: 20%; 
-    height: 20rem;
-    background-color: rgb(250, 250, 250);
-    box-shadow: 0 10px 25px rgba(92, 99, 105, .2);
-  }
-  #team .card:hover {
-    box-shadow: 0 10px 25px rgba(92, 99, 105, .8);
-  }
-  #team img{
-    position: relative;
-    width: 120px;
-    height: 120px;
-    overflow: hidden;
-    border-radius: 100%;
-    margin: 30px auto 0;
-    object-fit: cover;
-    box-shadow: 0 10px 25px rgba(92, 99, 105, .2);
-  }
-  #team img:hover{
-    box-shadow: 0 10px 25px rgba(92, 99, 105, .8);
-  }
-
-  /* End of team section */
-  nav {
-    position: sticky;
-    top: 0;
-    background-color: white;
-    font-weight:bold;
-    overflow: hidden;
-    z-index: 100;
-    box-shadow: 0 10px 25px rgba(92, 99, 105, .2);
-    font-family: 'Roboto Serif', serif;
-  }
-  nav .container {
-    width: 100%;
-    max-width: 1000px;
-    margin: 0 auto;
-    height: 80px;
-    text-align: left;
-    padding: 10px;
-  }
-  nav .container ul li {
-    display: inline-block;
-  }
-  nav .container ul li a {
-    display: inline-block;
-    text-decoration: none;
-    padding: 10px 20px;
-    color: black;
-  }
-  nav .container ul li.active {
-    background-color: #0EA293;
-    transition: 0.3s ease background-color;
-  }
-  nav .container ul li.active a {
-    color: rgb(255, 255, 255);
-  }
-  a{
-    text-decoration: none;
-    color: black;
-  }
-  .signin{
-    float: right;
-  }
-  </style>
+  <link rel="stylesheet" href="../style/welcome.css">
 </head>
 <body>
+
   <nav>
     <div class="container">
       <ul>
-        <li class="home active"><a href="#home">MyHealthyLife</a></li>
-        <li class="about"><a href="#about">介紹</a></li>
-        <li class="function"><a href="#function">功能</a></li>
-        <li class="calculate"><a href="#calculate">計算</a></li>
-        <li class="team"><a href="#team">團隊</a></li>
-        <li class="signin"><a href="signin.html">登入/註冊</a></li>
+        <li class="home active"><a href="#home" style="font-weight:Medium 500 ;font-style: Italic;">MyHealthyLife</a></li>
+        <li class="about"><a href="#about"  style="font-weight: 700;font-size:23px;">介紹</a></li>
+        <li class="function"><a href="#function"  style="font-weight: 700;font-size:23px;">功能</a></li>
+        <li class="calculate"><a href="#calculate"  style="font-weight: 700;font-size:23px;">計算</a></li>
+        <li class="team"><a href="#team" style="font-weight: 700;font-size:23px;">團隊</a></li>
+        <li class="signin"><a href="signin.html" style="font-weight: 700;font-size:23px;">登入/註冊</a></li>
       </ul>
     </div>
   </nav>
@@ -320,22 +32,22 @@
   <section id="home">
     <div class="homeDiv">
       <div>
-        <h1> My Healthy Life <span></span></h1>
-        <h1 style="color:white;">幫助您找回健康生活。<span></span></h1>
-        <a href="signin.html" type="button">免費開始</a>
+        <h1 style="font-size:55px; color:white; font-weight:Medium 500 ;font-style: Italic;"> My Healthy Life</h1>
+        <h2 style="font-size:30px; color:white; font-weight: 700; letter-spacing: 20px;">幫助您找回健康生活<span></span></h2>
+        <div style="margin-top: 60px;"></div><a href="signin.html" type="button">免費開始</a>
       </div>
     </div>
   </section>
 
   <section id="about">
     <div class="aboutImg">
-      <img src="vegetables.jpg" calss="img-circle" >
+      <img src="../img/vegetables.jpg" calss="img-circle" >
     </div>
     <div class="aboutWord">
-      <h1 > 一個讓您重拾</h1>
-      <h1> 健康習慣與美好生活 </h1>
-      <h1 > 的最佳助理。</h1>
-      <h3 style="color:gray">紀錄每日飲食以及攝入卡路里，並探索各種運動能如何協助您達成目標。</h3>
+      <a style=" font-size:60px;font-weight: 700;"> 最佳助理&nbsp;</a>
+      <a style="font-weight: 700;font-size:35px;  letter-spacing: 3px;">幫助您重拾</a>
+      <h1 style="font-weight: 700;font-size:35px; letter-spacing: 17px;"> <span class="highlight">健康習慣</span>與<span class="highlight">美好生活</span></h1>
+      <h3 style="font-size:25px; margin-top: 60px;color:gray">紀錄每日飲食以及攝入卡路里，並探索各種<br>運動能如何協助您達成目標。</h3>
     </div>
   </section>
 
@@ -350,8 +62,13 @@
           <div class="card-body">
             <p class="card-text">
               <h2>每日摘要</h2>
-              <p  style="color:gray">
-                顯示當日剩餘卡路里、已消耗卡路里、今日運動...項目，讓您對資訊一目瞭然。
+              <p style="color:gray">
+                <ul class="a">
+                  <li>顯示當日剩餘卡路里</li>
+                  <li>顯示已消耗卡路里</li>
+                  <li>顯示今日運動</li>
+                  <li>讓您對資訊一目瞭然</li>
+                </ul>
               </p>
             </p>
           </div>
@@ -363,7 +80,12 @@
             <p class="card-text">
               <h2>飲食日記</h2>
               <p style="color:gray">
-                紀錄每日飲食。您可以在此紀錄每一餐的卡路里以及飲水量，我們會為您計算當日剩餘卡路里。
+                <ul class="a">
+                  <li>紀錄每日飲食</li>
+                  <li>紀錄每一餐的卡路里</li>
+                  <li>紀錄飲水量</li>
+                  <li>計算當日剩餘卡路里</li>
+                </ul>
               </p>
             </p>
           </div>
@@ -374,8 +96,13 @@
           <div class="card-body">
             <p class="card-text">
               <h2>運動日記</h2>
-              <p  style="color:gray">
-                紀錄每日運動。我們會根據您方便的時間以及運動種類，推薦當日運動計畫，找出最佳的卡路里消耗組合。
+              <p  style="color:gray;">
+                <ul class="a">
+                  <li>紀錄每日運動</li>
+                  <li>推薦當日運動計畫</li>
+                  <li>紀錄飲水量</li>
+                  <li>計算當日剩餘卡路里</li>
+                </ul>
               </p>
             </p>
           </div>
@@ -387,7 +114,12 @@
             <p class="card-text">
               <h2>統計圖表</h2>
               <p style="color:gray">
-                以圖形化顯示您的健康生活紀錄，包含BMI、體重、卡路里以及熱量赤字圖表。
+                <ul class="a">
+                  <li>BMI圖表</li>
+                  <li>體重圖表</li>
+                  <li>卡路里圖表</li>
+                  <li>熱量赤字圖表圖表</li>
+                </ul>
               </p>
             </p>
           </div>
@@ -411,22 +143,20 @@
               <li data-target="#myCarousel" data-slide-to="1"></li>
               <li data-target="#myCarousel" data-slide-to="2"></li>
             </ol>
-        
             <!-- Wrapper for slides -->
             <div class="carousel-inner">
               <div class="item active">
-                <img src="TDEE.jpg" alt="TDEE" style="width:100%;">
+                <img src="../img/TDEE.jpg" alt="TDEE" style="width:100%;">
               </div>
         
               <div class="item">
-                <img src="BMI.png" alt="BMI" style="width:100%;">
+                <img src="../img/BMI.png" alt="BMI" style="width:100%;">
               </div>
             
               <div class="item">
-                <img src="Kcal.jpeg" alt="KCal" style="width:100%;">
+                <img src="../img/Kcal.jpeg" alt="KCal" style="width:100%;">
               </div>
             </div>
-        
             <!-- Left and right controls -->
             <a class="left carousel-control" href="#myCarousel" data-slide="prev">
               <span class="glyphicon glyphicon-chevron-left"></span>

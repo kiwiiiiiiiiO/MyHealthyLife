@@ -1,0 +1,110 @@
+.tab{
+    display: none;
+}  
+.title {
+    font-size: 30px;
+} 
+.input{
+    padding: 10px;
+    width: 90%;
+    font-size: 16px;
+    border-radius: 7px;
+    border: 1px solid #aaaaaa;
+    margin-bottom: 10px;
+}
+.signupBtnDiv{
+    margin-top: 20px;
+    position: static;
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.signupBtn {
+    width: 60px;
+    height: 40px;
+    border: none;
+    background-color: #0EA293;
+    color: white;
+    border-radius: 6px; 
+    cursor: pointer;
+    font-size: 16px;
+}
+.signupBtn:hover {
+    background-color: #5FDAC9;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(92, 99, 105,0.4);
+}
+.step {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbbbbb;
+    border: none;  
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 0.5;
+} 
+/* Mark the active step: */
+.step.active {
+    opacity: 1;
+} 
+/* Mark the steps that are finished and valid: */
+.step.finish {
+    background-color: #04AA6D;
+}
+#radios input[type="radio"] {
+    display: none; 
+}
+#radios input:checked + .button {
+    border-color: white;
+    background: #0EA293;
+    color:white; 
+}
+#radios .button {
+    width: 95%;
+    border-width: 2px;
+    border-color: #0EA293;
+    border-style: solid;
+    color: #0EA293;
+    background-color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 10px;
+}
+#radios .button:hover {
+    border-color: white;
+    background: #0EA293;
+    color:white; 
+}
+#radios .round {
+    border-radius: 6px; 
+}
+
+.btn_1{
+    width: 100%;
+    border-color: #0EA293;
+    border-radius: 6px;
+    border-style: solid;
+    color: #0EA293;
+    background-color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 10px;
+}
+.btn_1:hover {
+    border-color: white;
+    background: #0EA293;
+    color:white;
+}
+.btn_1 :active {
+    border-color: white;
+    background: #0EA293;
+    color:white;
+}

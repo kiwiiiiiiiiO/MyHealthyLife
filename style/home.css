@@ -9,45 +9,51 @@ html {
     font-size: 24px;
     scroll-behavior: smooth;
 }
-table {
-    margin: auto;
+main h2{
+    text-align: center;
 }
-
-th,td {
-    border: 1px solid black;
+.center {
+    margin-left: auto;
+    margin-right: auto;
 }
-
-main{
-    display: flex;
-    background-color: white;
-}
-#content, .center{
-    padding: 50px;
-    margin: auto;
-    background-color: #0EA293;
-    width: 800px;
+.right, .left{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    position: relative;
+    height: 650px;
+    width:40%;
+    padding: 20px;
     border-radius: 8px; 
     box-shadow: 0 10px 25px rgba(92, 99, 105, .8); 
-} 
-h2 {
-    font-size: 2em;
+}
+.right{
+    margin-right: 100px;
+	float:right;
+    background-color:  #0EA293;
+}
+.left{
+    margin-left: 100px;
+	float:left;
+    background-color:  #0EA293;
+}
+.progress-container:before {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    right: 0;
+    top:0;
+    line-height:1em;
+  }
+  
+.progress-container {
     text-align: center;
-    color: #333;
+    position: relative;
 }
 
-ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    text-align: center;
+.table-responsive{
+    max-height: 150px;
+    max-width: 90%;
 }
-fieldset {
-    display: inline-block;
-    vertical-align: middle;
-}
-
-
-
 /* nav */
 nav {
     position: sticky;
@@ -83,4 +89,8 @@ nav .container ul li.active {
 
 nav .container ul li.active a {
     color: rgb(255, 255, 255);
+}
+
+.signin {
+    float: right;
 }

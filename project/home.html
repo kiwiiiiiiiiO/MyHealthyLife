@@ -4,79 +4,21 @@
 <head>
 	<meta charset="UTF-8">
 	<title>每日摘要</title>
-	<style>
-		* {
-			padding: 0;
-			margin: 0;
-			box-sizing: border-box;
-		}
-
-		html {
-			font-family: "Roboto Mono";
-			font-size: 24px;
-			scroll-behavior: smooth;
-		}
-
-		.center {
-			margin-left: auto;
-			margin-right: auto;
-		}
-		nav {
-			position: sticky;
-			top: 0;
-			background-color: white;
-			box-shadow: 0 10px 25px rgba(92, 99, 105, .2);
-		}
-
-		nav .container {
-			width: 100%;
-			max-width: 1000px;
-			margin: 0 auto;
-			height: 80px;
-			text-align: left;
-			padding: 10px;
-		}
-
-		nav .container ul li {
-			display: inline-block;
-		}
-
-		nav .container ul li a {
-			display: inline-block;
-			text-decoration: none;
-			padding: 10px 20px;
-			color: black;
-		}
-
-		nav .container ul li.active {
-			background-color: #0EA293;
-			transition: 0.3s ease background-color;
-		}
-
-		nav .container ul li.active a {
-			color: rgb(255, 255, 255);
-		}
-
-		.signin {
-			float: right;
-		}
-	</style>
+	<link rel="stylesheet" href="../style/home.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
+	<!-- 字體 -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Serif:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
 
 <body>
 	<header>
 		<div>
-
 			<nav>
 				<div class="container">
 					<ul>
@@ -90,14 +32,85 @@
 				</div>
 			</nav>
 	</header>
+	
 	<main>
-		<div style="padding-left: 50px;">
-			<h2>每日摘要</h2>
-			<p>您今天攝取了:香蕉(100Kcal)，拉麵(1200Kcal)，水(1000cc)</p>
-			<p>您今天運動了:慢跑(1000Kcal)，游泳(600Kcal)</p>
-			<p>今天剩餘消耗卡路里: 1800 | 1500+100+1200-1000-600=1200</p>
+		<div class="left">
+			<h2>今日摘要</h2>
+			<p>飲水量：</p> 
+			<div class="progress" style="height: 30px;width: 90%;">
+				<div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="1000" aria-valuemin="0" aria-valuemax="2000">1000cc</div>
+			</div>
+			<p>食物紀錄：</p>
+			<div class="table-responsive">
+				<table class="table table-hover">
+					<thead>
+					<tr>
+						<th scope="col">#</th>
+						<th scope="col">食物名稱</th>
+						<th scope="col">卡路里(Kcal)</th>
+					</tr>
+					</thead>
+					<tbody>
+					<tr>
+						<th scope="row">1</th>
+						<td>香蕉</td>
+						<td>100</td> 
+					</tr>
+					<tr>
+						<th scope="row">2</th>
+						<td>茶葉蛋</td>
+						<td>500</td> 
+					</tr>
+					<tr>
+						<th scope="row">3</th>
+						<td>拉麵</td>
+						<td>1200</td> 
+					</tr>
+					<tr>
+						<th scope="row" colspan="2">總共攝取</th>
+						<td>1800</td>
+					</tr>
+					</tbody>
+				</table>
+			</div>
+			<p>運動紀錄:</p>
+			<div class="table-responsive">
+				<table class="table table-hover">
+					<thead>
+					<tr>
+						<th scope="col">#</th>
+						<th scope="col">運動項目</th>
+						<th scope="col">時長(min)</th>
+						<th scope="col">消耗卡路里(Kcal)</th>
+					</tr>
+					</thead>
+					<tbody>
+					<tr>
+						<th scope="row">1</th>
+						<td>慢跑</td>
+						<td>10</td> 
+						<td>1000</td> 
+					</tr>
+					<tr>
+						<th scope="row">2</th>
+						<td>游泳</td>
+						<td>5</td> 
+						<td>200</td>  
+					</tr>
+					<tr>
+						<th scope="row"colspan="3">總共消耗</th>
+						<td>1200</td>
+					</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="right" >
 			<h2>體重計錄</h2>
-			<canvas id="BMIChart" style="width:50%;max-width:500px;height:50%;max-height:200px;"></canvas>
+			<p>剩餘消耗卡路里:</p>
+			<p>1800 | 1500+100+1200-1000-600=1200</p>
+			<p>體重報表</p>
+			<canvas id="BMIChart" style="width:50%; max-width:500px; height:80%; max-height:330px; background-color: white; border-radius: 6px;"></canvas>
 		</div>
 	</main>
 

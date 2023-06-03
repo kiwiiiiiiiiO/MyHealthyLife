@@ -42,25 +42,38 @@ function nextPrev(n) {
 }
 
 function validateForm() {
-    // // This function deals with validation of the form fields
-    // var x, y, i, valid = true;
-    // x = document.getElementsByClassName("tab");
-    // y = x[currentTab].getElementsByTagName("input");
-    // // A loop that checks every input field in the current tab:
-    // for (i = 0; i < y.length; i++) {
-    //   // If a field is empty...
-    //   if (y[i].value == "") {
-    //     // add an "invalid" class to the field:
-    //     y[i].className += " invalid";
-    //     // and set the current valid status to false:
-    //     valid = false;
-    //   }
-    // }
-    // // If the valid status is true, mark the step as finished and valid:
-    // if (valid) {
-    //   document.getElementsByClassName("step")[currentTab].className += " finish";
-    // }
-    return valid=true; // return the valid status
+    // This function deals with validation of the form fields
+    var x, y, i, valid = true;
+    var z, z_valid = false;
+    
+    x = document.getElementsByClassName("tab");
+    y = x[currentTab].getElementsByTagName("input");
+    z =  x[currentTab].getElementsByClassName("radio");
+    // A loop that checks every input field in the current tab:
+    for (i = 0; i < y.length; i++) {
+      // If a field is empty...
+      if (y[i].value == "") {
+        // add an "invalid" class to the field:
+        y[i].className += " invalid";
+        // and set the current valid status to false:
+        valid = false;
+      }
+    }
+
+    // check the radio is clicked 
+    for (i = 0; i < z.length; i++) {
+
+      if (z[i].checked == true) {
+        z_valid = true;
+      }
+
+    }
+
+    // If the valid status is true, mark the step as finished and valid:
+    if (valid && z_valid) {
+      document.getElementsByClassName("step")[currentTab].className += " finish";
+    }
+    return valid&& z_valid; // return the valid status
 }
 
 function fixStepIndicator(n) {

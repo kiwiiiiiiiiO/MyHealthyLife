@@ -5,30 +5,26 @@
 }
 
 html {
-    font-family: 'Roboto Serif', serif;
+    font-family: "Roboto Mono";
     font-size: 24px;
     scroll-behavior: smooth;
 }
+
 table {
     margin: auto;
 }
 
-th,td {
+th,
+td {
     border: 1px solid black;
 }
 
-main{
+.center {
     display: flex;
-    background-color: white;
+    justify-content: center;
+    align-items: center;
 }
-#content, .center{
-    padding: 50px;
-    margin: auto;
-    background-color: #0EA293;
-    width: 800px;
-    border-radius: 8px; 
-    box-shadow: 0 10px 25px rgba(92, 99, 105, .8); 
-} 
+
 h2 {
     font-size: 2em;
     text-align: center;
@@ -46,9 +42,6 @@ fieldset {
     vertical-align: middle;
 }
 
-
-
-/* nav */
 nav {
     position: sticky;
     top: 0;
@@ -83,4 +76,7 @@ nav .container ul li.active {
 
 nav .container ul li.active a {
     color: rgb(255, 255, 255);
+}
+.signin {
+    float: right;
 }

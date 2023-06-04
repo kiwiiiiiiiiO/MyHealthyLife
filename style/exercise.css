@@ -682,7 +682,11 @@ nav {
    nav .containerd ul li.active a {
     color: rgb(255, 255, 255);
    }
- 
+   html {
+    font-family: "Roboto Mono";
+    font-size: 24px;
+    scroll-behavior: smooth;
+}
    .signin {
     float: right;
    }

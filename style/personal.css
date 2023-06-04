@@ -84,3 +84,6 @@ nav .container ul li.active {
 nav .container ul li.active a {
     color: rgb(255, 255, 255);
 }
+.signin {
+    float: right;
+}

@@ -8,7 +8,11 @@
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
 }
-
+html{
+    font-family: "Roboto Mono";
+    font-size:24px;
+    scroll-behavior:smooth;
+}
 /* nice scroll bar */
 ::-webkit-scrollbar {
     width: 5px;

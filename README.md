@@ -3,17 +3,19 @@
 ### Bugs
 
 * Fred
-  - [ ] 建立資料庫
+  - [ ] exercise.html
+  - [ ] foodtest.html
+  - [ ] modal.html
 
 * Jennifer
-  - [ ] signup.js 註冊 input 驗證
-  - [ ] signin.css 調整
+  - [ ] foodtest.html
+  - [ ] exercise.html
   - [ ] home.css 
   - [ ] personal.css
 
 * Hsu
   - [ ] php 連線
-  - [ ] nav 格式統一
+  - [ ] 建立資料庫
 
 * Lee
   - [ ] 建立資料庫
@@ -27,4 +29,4 @@
 | 日期           | Event          | NOTE          |
 | :-------------:|:-------------:|:-------------:
 | 6/4          |   `資料庫連線`   | 期中考前兩週    |
-| 6/12          |   `期末報告`     |               |
+| 6/12          |   `期末報告`    |              |

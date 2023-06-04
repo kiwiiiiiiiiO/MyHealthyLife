@@ -51,7 +51,7 @@
 } 
 /* Mark the steps that are finished and valid: */
 .step.finish {
-    background-color: #0EA293;
+    background-color: #04AA6D;
 }
 #radios input[type="radio"] {
     display: none; 

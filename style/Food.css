@@ -1,0 +1,219 @@
+body {
+    background-color: bisque;
+    text-decoration: dotted;
+    padding-top: 80px;
+    font-family: "Balsamiq Sans";
+}
+
+/* nav bar */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgb(240, 191, 131);
+    box-shadow: 0 10px 25px rgba(92, 99, 105, .2);
+    width: 100%;
+    z-index: 9999;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav .containerd {
+    width: 100%;
+    /* max-width: 1000px; */
+    margin: 0 auto;
+    height: auto;
+    text-align: left;
+    padding: 10px;
+    top: 0 px;
+    font-family: "Balsamiq Sans";
+    font-size: 30px;
+}
+
+nav .containerd ul li {
+    display: inline-block;
+}
+
+nav .containerd ul li a {
+    display: inline-block;
+    text-decoration: none;
+    padding: 10px 20px;
+    color: black;
+}
+
+nav .containerd ul li.active {
+    transition: 0.3s ease background-color;
+}
+
+nav .containerd ul li.active a {
+    color: black;
+    font-size: 30px;
+    height: auto;
+}
+
+.signin {
+    text-decoration: none;
+    padding: 10px 20px;
+    float: right;
+    height: auto;
+}
+
+/* 日曆 */
+.calendar {
+    font-family: "Balsamiq Sans";
+}
+
+.calendar table {
+    border-collapse: collapse;
+}
+
+.calendar th,
+.calendar td {
+    border: 2px solid #ffffff;
+    padding: 26px;
+    text-align: center;
+    font-size: 26px;
+    height: 80px;
+    width: 50px;
+}
+
+.calendar th {
+    background-color: rgb(240, 191, 131);
+}
+
+.calendar .selected {
+    background-color: rgb(244, 165, 161);
+    color: #fff;
+}
+
+.food-table {
+    margin-top: 20px;
+}
+
+.food-table th,
+.food-table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    border-radius: 10px;
+}
+
+#foodTable th {
+    background-color: rgb(240, 191, 131);
+    color: white;
+}
+
+#foodTable tr:hover {
+    background-color: rgba(244, 165, 161, 0.5);
+}
+
+/* Add Food Button */
+.add-food-btn {
+    background-color: rgb(240, 191, 131);
+    border: none;
+    color: white;
+    padding: 12px 16px;
+    text-align: center;
+    font-size: 16px;
+    margin-top: 20px;
+    cursor: pointer;
+    width: auto;
+    border-radius: 10px;
+}
+
+.yearmonth {
+    font-size: 26px;
+}
+
+.container {
+    display: flex;
+}
+
+.yearmonth,
+.calendar {
+    margin-left: 20px;
+}
+
+.food-table,
+.add-food-btn {
+    margin-left: 30px;
+    font-size: 26px;
+    font-family: "Balsamiq Sans";
+}
+
+.vertical {
+    display: flex;
+    flex-direction: column;
+}
+
+.vertical:not(:last-child) {
+    margin-right: 20px;
+}
+
+#year,
+#month {
+    height: 60 px;
+    width: 100px;
+    font-size: 30px;
+    font-family: "Balsamiq Sans";
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 20% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    font-size: 26px;
+    border-radius: 10px;
+}
+
+#foodName,
+#quantity,
+#calories {
+    width: 70%;
+    height: 30px;
+}
+
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#modalAddFood,
+.delete-button {
+    background-color: rgb(240, 191, 131);
+    border: white;
+    color: white;
+    padding: 12px 16px;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    width: max-content;
+    border-radius: 10px;
+    justify-content: center;
+}

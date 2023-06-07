@@ -51,7 +51,7 @@
 } 
 /* Mark the steps that are finished and valid: */
 .step.finish {
-    background-color: #04AA6D;
+    background-color: #0EA293;
 }
 #radios input[type="radio"] {
     display: none; 
@@ -107,4 +107,24 @@
     border-color: white;
     background: #0EA293;
     color:white;
+}
+/* success msg */
+.msg{
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 50%;
+    height: 50px;
+    background: #5FDAC9;
+    color: #FFF;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 5px 20px rgba(92, 99, 105,0.5);
+}
+
+.msg p{
+    font-weight: bold;
+    text-align: center;
+    font-size: 20px;
 }

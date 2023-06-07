@@ -26,7 +26,7 @@
         </div>
     </nav>
     <div class="FormDiv">
-        <form class="form">
+        <form class="form" method="post" action="../database/signin_process.php">
             <h1 class="title"> 會員登入 </h1>
             <div class="inputDiv">
                 <input class="input" required="required" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" placeholder="Email" type="email">
@@ -38,6 +38,7 @@
                 <i id="checkEye" class="far fa-eye"></i>
             </div>
             <a href="forgetPassword.html" style="color:gray;">忘記密碼？</a>
+            <!-- change to submit input -->
             <button class="signinBtn">登入</button>
             <div class="signinDiv">
                 <a>還不是會員？</a>

@@ -35,6 +35,10 @@
             $this->closeDB();
             return $msg;
         }
+
+        public function doLogin($email, $password){
+            $this->openDB();
+        }
     }
 
 ?>

@@ -5,6 +5,9 @@
     if(isset($_SESSION['msg'])){
         $msg = $_SESSION['msg'];
     }
+    if(isset($_SESSION['name'])){
+        $name = $_SESSION['name'];
+    }
 ?>
 
 <!DOCTYPE html>
@@ -26,7 +29,7 @@
     }
   </style>
 </head>
-<body>
+<body onload="hideMsg();">
     <nav>
         <div class="navContainer">
             <ul>
@@ -36,14 +39,15 @@
     </nav>
     <div class="FormDiv">
         <?php
-            if($msg == "done"){
+            if($msg == "done" && $name!=""){
             echo "<div id='msg' class='msg'>
                     <p>Hello $name! 您已成功註冊 （๐•ᴗ•๐） </p>
                 </div>";
             }
         ?>
         <form id="regForm" method="post" action="../database/signup_progress.php" class="form" >
-            <!-- 1 -->
+            
+        <!-- 1 -->
             <div class="tab">
                 <h1 class="title">請問您叫什麼名字呢？</h1>
                 <a >很高興認識您！<br>讓我們一起進入健康生活吧！</a><br><br>
@@ -86,16 +90,24 @@
             <!-- 5 -->
             <div class="tab">
                 <h1 class="title"> 身高體重 </h1><br><br>
+                <p>目前身高(cm)</p><br>
                 <input class="input" name="height" placeholder="目前身高(cm)" type="number">
+                <p>目前體重(kg)</p><br>
                 <input class="input" name="weight" placeholder="目前體重(kg)" type="number">
+                <p>目標體重(kg)</p><br>
                 <input class="input" name="weight_goal" placeholder="目標體重(kg)" type="number">
             </div>
             <!-- 6 -->
             <div class="tab">
                 <h1 class="title"> 建立帳號 </h1><br><br>
+                <p>郵件地址</p><br>
                 <input class="input" name="email" placeholder="郵件地址" type="text" required="required">
+                <p>建立密碼</p><br>
                 <input class="input" name="password" placeholder="建立密碼" type="password" required="required">
+                <p>確認密碼</p><br>
                 <input class="input" name="password" placeholder="確認密碼" type="password" required="required">
+                <br><br>
+                <h3> 恭喜您填寫完所有資料，確定送出？ </h3>
             </div>
 
             <div class="signupBtnDiv">
@@ -105,7 +117,6 @@
             <br><br><br>
             <!-- Circles which indicates the steps of the form: -->
             <div style="text-align:center;margin-top:40px;">
-                    <span class="step"></span>
                     <span class="step"></span>
                     <span class="step"></span>
                     <span class="step"></span>

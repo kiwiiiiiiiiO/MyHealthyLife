@@ -14,7 +14,7 @@
     $weight_goal = $_POST['weight_goal'];
     $weekly_goal = $_POST['weekly_goal'];
     $activity = $_POST['activity'];
-  
+    
     // num 
     $weight = (int)$weight;
     $height = (int)$height;
@@ -24,6 +24,7 @@
     $msg = $helper->doRegister($name, $email, $password, $gender, $birth, $cellphone, $weight, $height, $weight_goal, $weekly_goal, $activity);
 
     $_SESSION['msg'] = $msg;
+    $_SESSION['name'] = $name;
     header("Location: ../project/signup.php");
     exit();
 ?>

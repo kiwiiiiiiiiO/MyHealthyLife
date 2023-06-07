@@ -45,7 +45,7 @@
                 </div>";
             }
         ?>
-        <form id="regForm" method="post" action="../database/signup_progress.php" class="form" >
+        <form id="regForm" method="post" action="../database/signup_process.php" class="form" >
             
         <!-- 1 -->
             <div class="tab">

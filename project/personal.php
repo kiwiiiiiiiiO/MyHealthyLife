@@ -1,3 +1,6 @@
+<?php 
+    include('../database/personal_process.php'); 
+?>
 <!DOCTYPE html>
 <html>
 
@@ -13,7 +16,6 @@
         function Submit() {
             common.style.display = "block";
             content.style.display = "none"
-
         }
     </script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

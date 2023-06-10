@@ -1,5 +1,5 @@
 <?php
-    session_start();
+    session_start(); 
     $name = "";
     $msg = "";
     if(isset($_SESSION['msg'])){
@@ -33,7 +33,7 @@
     <nav>
         <div class="navContainer">
             <ul>
-                <li><a href="welcome.html">MyHealthyLife</a></li>
+                <li><a href="welcome.html" action="../database/sesstion_destroy.php">MyHealthyLife</a></li>
             </ul>
         </div>
     </nav>
@@ -103,9 +103,7 @@
                 <p>郵件地址</p><br>
                 <input class="input" name="email" placeholder="郵件地址" type="text" required="required">
                 <p>建立密碼</p><br>
-                <input class="input" name="password" placeholder="建立密碼" type="password" required="required">
-                <p>確認密碼</p><br>
-                <input class="input" name="password" placeholder="確認密碼" type="password" required="required">
+                <input class="input" name="password"required="required" minlength ="8" placeholder="建立密碼" type="text" required="required">
                 <br><br>
                 <h3> 恭喜您填寫完所有資料，確定送出？ </h3>
             </div>

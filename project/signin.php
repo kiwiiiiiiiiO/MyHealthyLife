@@ -1,3 +1,12 @@
+<?php
+    session_start();
+    session_destroy(); 
+    session_start();
+    if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+        header("location: welcome.html");
+        exit;  //記得要跳出來，不然會重複轉址過多次
+    }
+?>
 <!DOCTYPE html>
 <html lang="zh">
 <head>
@@ -29,11 +38,11 @@
         <form class="form" method="post" action="../database/signin_process.php">
             <h1 class="title"> 會員登入 </h1>
             <div class="inputDiv">
-                <input class="input" required="required" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" placeholder="Email" type="email">
+                <input class="input" name="email" required="required" placeholder="Email" type="text">
                 <label class="label"> 帳號/信箱 </label>
             </div>
             <div class="inputDiv">
-                <input class="input" required="required" minlength ="8" placeholder="密碼" type="password" id="passwordInput">
+                <input class="input" name="password" required="required" minlength ="8" placeholder="密碼" type="password" id="passwordInput">
                 <label class="label"> 密碼 </label>
                 <i id="checkEye" class="far fa-eye"></i>
             </div>

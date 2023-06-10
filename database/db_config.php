@@ -1,9 +1,9 @@
 <?php
 
-    define("HOST", "140.127.74.144");
+    define("HOST", "localhost");
     define("PORT", 3306);
     define("DATABASE", "MyHealthyLife");
-    define("USERNAME", "410977008");
-    define("PASSWORD", "410977008");
+    define("USERNAME", "root");
+    define("PASSWORD", "aa910828");
     
 ?>

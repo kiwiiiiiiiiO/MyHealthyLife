@@ -38,6 +38,21 @@
 
         public function doLogin($email, $password){
             $this->openDB();
+
+            $sql = "SELECT * FROM User WHERE email ='".$email."'";
+            $result = mysqli_query($this->link, $sql);
+            if(mysqli_num_rows($result)==1 && $password == mysqli_fetch_assoc($result)["password"]){
+                session_start();
+                $_SESSION["loggedin"] = true;
+                // Sesstion 
+                $_SESSION["user_id"] = mysqli_fetch_assoc($result)["user_id"];
+                $_SESSION["name"] = mysqli_fetch_assoc($result)["name"];         
+                header("location: ../project/home.html"); 
+            }else{
+                echo "<script>alert('帳號或密碼錯誤');
+                window.location.href='../project/signin.php';
+                </script>";
+            }
         }
     }
 

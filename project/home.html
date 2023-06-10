@@ -4,79 +4,22 @@
 <head>
 	<meta charset="UTF-8">
 	<title>每日摘要</title>
-	<style>
-		* {
-			padding: 0;
-			margin: 0;
-			box-sizing: border-box;
-		}
-
-		html {
-			font-family: "Roboto Mono";
-			font-size: 24px;
-			scroll-behavior: smooth;
-		}
-
-		.center {
-			margin-left: auto;
-			margin-right: auto;
-		}
-		nav {
-			position: sticky;
-			top: 0;
-			background-color: white;
-			box-shadow: 0 10px 25px rgba(92, 99, 105, .2);
-		}
-
-		nav .container {
-			width: 100%;
-			max-width: 1000px;
-			margin: 0 auto;
-			height: 80px;
-			text-align: left;
-			padding: 10px;
-		}
-
-		nav .container ul li {
-			display: inline-block;
-		}
-
-		nav .container ul li a {
-			display: inline-block;
-			text-decoration: none;
-			padding: 10px 20px;
-			color: black;
-		}
-
-		nav .container ul li.active {
-			background-color: #0EA293;
-			transition: 0.3s ease background-color;
-		}
-
-		nav .container ul li.active a {
-			color: rgb(255, 255, 255);
-		}
-
-		.signin {
-			float: right;
-		}
-	</style>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	  <!-- google font -->
+	 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+	 <link rel="preconnect" href="https://fonts.googleapis.com">
+	 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	 <link href="https://fonts.googleapis.com/css2?family=Roboto+Serif:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+	<!-- boorstrap -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script> -->
 	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
+	<link rel="stylesheet" href="../style/home.css">
 </head>
 
 <body>
 	<header>
 		<div>
-
 			<nav>
 				<div class="container">
 					<ul>
@@ -84,60 +27,101 @@
 						<li class="about"><a href="exercise.html">運動日記</a></li>
 						<li class="function"><a href="foodtest.html">食物日記</a></li>
 						<li class="calculate"><a href="chart.html">統計報表</a></li>
-						<li class="team"><a href="personal.html">使用者設定</a></li>
+						<li class="team"><a href="personal.php">使用者設定</a></li>
 						<li class="signin"><a href="welcome.html">登出</a></li>
 					</ul>
 				</div>
 			</nav>
 	</header>
+
 	<main>
-		<div style="padding-left: 50px;">
-			<h2>每日摘要</h2>
-			<p>您今天攝取了:香蕉(100Kcal)，拉麵(1200Kcal)，水(1000cc)</p>
-			<p>您今天運動了:慢跑(1000Kcal)，游泳(600Kcal)</p>
-			<p>今天剩餘消耗卡路里: 1800 | 1500+100+1200-1000-600=1200</p>
-			<h2>體重計錄</h2>
-			<canvas id="BMIChart" style="width:50%;max-width:500px;height:50%;max-height:200px;"></canvas>
+		<div class="center">
+			<div class="leftDiv">
+				<h2>每日摘要</h2>
+				<p>今日飲水量：</p>
+				<div class="progress">
+					<div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">1000cc</div>
+				</div>
+				<p>今天攝取食物:</p>
+				<div class="table-responsive">
+					<table class="table table-hover">
+						<thead>
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col">食物名稱</th>
+							<th scope="col">卡路里(Kcal)</th>
+						</tr>
+						</thead>
+						<tbody>
+						<tr>
+							<th scope="row">1</th>
+							<td>香蕉</td>
+							<td>100</td>
+						</tr>
+						<tr>
+							<th scope="row">2</th>
+							<td>拉麵</td>
+							<td>1200</td>
+						</tr>
+						<tr>
+							<th scope="row">3</th>
+							<td>草莓麵包</td>
+							<td>500</td>
+						</tr>
+						<tr>
+							<th scope="row">總共攝取</th>
+							<th  colspan="2">1800</th>
+						</tr>
+						</tbody>
+					</table>
+				</div>
+				<p>您今天運動了:</p>
+				<div class="table-responsive">
+					<table class="table  table-hover">
+						<thead>
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col">運動名稱</th>
+							<th scope="col">消耗卡路里(Kcal)</th>
+							<th scope="col">運動時間(min)</th>
+						</tr>
+						</thead>
+						<tbody>
+						<tr>
+							<th scope="row">1</th>
+							<td>慢跑</td>
+							<td>1000</td>
+							<td>30</td>
+						</tr>
+						<tr>
+							<th scope="row">2</th>
+							<td>游泳</td>
+							<td>600</td>
+							<td>15</td>
+						</tr>
+						<tr>
+							<th scope="row">3</th>
+							<td>健走</td>
+							<td>120</td>
+							<td>60</td>
+						</tr>
+						<tr>
+							<th scope="row">總共消耗</th>
+							<th colspan="3">1720</th>
+						</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+			<div calss="rightDiv">
+				<h2>體重計錄</h2>
+				<p>今日剩餘消耗卡路里:</p>
+				<p>1800 | 1500+100+1200-1000-600=1200</p>
+				<canvas id="BMIChart" style="width:50%;max-width:500px;height:50%;max-height:200px;"></canvas>
+			</div>
 		</div>
 	</main>
-
+	<script src="../js/home.js"></script>
 </body>
-<script>
-	var ctx = document.getElementById('BMIChart').getContext('2d');
-	var myChart = new Chart(ctx, {
-		type: 'line',
-		data: {
-			labels: ['星期一', '星期二', '星期三', '星期四', '星期五', '星期六', '星期日'],
-			datasets: [{
-				label: '一周體重報表',
-				data: [75, 75.5, 75, 74, 74.5, 75, 75],
-				backgroundColor: 'rgba(255, 99, 132, 0.2)',
-				borderColor: 'rgba(255, 99, 132, 1)',
-				width: '100px',
-				borderWidth: 1
-			}]
-		},
-		options: {
-				responsive: true,
-				scales: {
-					y: {
-						display: true,
-						title: {
-							display: true,
-							text: '體重(kg)',
-							color: '#191',
-							font: {
-								family: 'Times',
-								size: 20,
-								style: 'normal',
-								lineHeight: 1.2
-							},
-							padding: { top: 30, left: 0, right: 0, bottom: 0 }
-						}
-					}
-				}
-			},
-	});
-</script>
-
 </html>

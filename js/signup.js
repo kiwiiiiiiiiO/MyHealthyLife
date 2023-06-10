@@ -92,4 +92,10 @@ for(var i=0; i< btn.length;i++){
   }
 )}
 
-
+const togglePassword = document.querySelector('#checkEye');
+const password = document.querySelector('#passwordInput');
+togglePassword.addEventListener('click', function (e) {
+    const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+    password.setAttribute('type', type);
+    this.classList.toggle('fa-eye-slash');
+});

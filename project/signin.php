@@ -1,10 +1,9 @@
-<?php 
+<?php
     session_start();
     session_destroy(); 
     session_start();
-
     if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-        header("location: home.html");
+        header("location: welcome.html");
         exit;  //記得要跳出來，不然會重複轉址過多次
     }
 ?>

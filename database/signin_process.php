@@ -7,7 +7,7 @@
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    
+
     $helper = new master();
     // doLogin 
 

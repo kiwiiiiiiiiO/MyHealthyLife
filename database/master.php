@@ -43,8 +43,8 @@
             $result = mysqli_query($this->link, $sql);
             if(mysqli_num_rows($result)==1 && $password == mysqli_fetch_assoc($result)["password"]){
                 session_start();
+                $_SESSION["loggedin"] = true;   
                 $result = mysqli_fetch_assoc($result);
-                $_SESSION["loggedin"] = true;
                 // Sesstion 
                 if(isset($result['user_id'])){
                     $_SESSION["userid"] = $result['user_id'];    

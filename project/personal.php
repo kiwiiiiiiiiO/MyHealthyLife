@@ -42,7 +42,7 @@
                 <ul>
                     <li class="home "><a href="home.html">MyHealthyLife</a></li>
                     <li class="about"><a href="exercise.html">運動日記</a></li>
-                    <li class="function"><a href="foodtest.html">食物日記</a></li>
+                    <li class="function"><a href="Food.html">食物日記</a></li>
                     <li class="calculate"><a href="chart.html">統計報表</a></li>
                     <li class="team active"><a href="personal.php">使用者設定</a></li>
                     <li class="signin"><a href="welcome.html" action="sesstion_destroy">登出</a></li>

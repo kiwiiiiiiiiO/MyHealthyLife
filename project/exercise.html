@@ -1,85 +1,78 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>運動日記</title>
-    <link rel="stylesheet" href="../style/exercise.css">
+<html>
 
+<head>
+
+    <title>運動日記</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../style/Food.css">
+    <link href='https://fonts.googleapis.com/css?family=Balsamiq Sans' rel='stylesheet'>
     <nav>
         <div class="containerd">
             <ul>
-            <li class="home"><a href="home.html">MyHealthyLife</a></li>
-            <li class="about active"><a href="exercise.html">運動日記</a></li>
-            <li class="function"><a href="foodtest.html">食物日記</a></li>
-            <li class="calculate"><a href="chart.html">統計報表</a></li>
-            <li class="team"><a href="personal.php">使用者設定</a></li>
-            <li class="signin"><a href="welcome.html">登出</a></li>
+                <li class="home"><a href="home.html">MyHealthyLife</a></li>
+                <li class="about active"><a href="exercise.html">運動日記</a></li>
+                <li class="function"><a href="Food.html">食物日記</a></li>
+                <li class="calculate"><a href="chart.html">統計報表</a></li>
+                <li class="team"><a href="personal_edit.html">使用者設定</a></li>
+                <li class="signin"><a href="welcome.html">登出</a></li>
         </div>
     </nav>
 </head>
 
+
 <body>
+    <br>
     <div class="container">
-        <div class="left">
-            <div class="calendar">
-                <div class="month">
-                    <i class="fas fa-angle-left prev"></i>
-                    <div class="date">december 2015</div>
-                    <i class="fas fa-angle-right next"></i>
+        <div class="vertical">
+            <div class="yearmonth">
+                <label for="year">Year：</label>
+                <input type="number" id="year" min="1900" max="2100" value="2023" onchange="changeCalendar()">
+                <label for="month">Month：</label>
+                <input type="number" id="month" min="1" max="12" value="5" onchange="changeCalendar()">
+                <!-- <button id="addWaterButton" onclick="showModal()">新增水量</button> -->
+            </div>
+            <br>
+            <div id="calendar" class="calendar"></div>
+
+        </div>
+
+
+        <div class="vertical">
+            <table id="foodTable" class="food-table">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Sport</th>
+                        <th>Time</th>
+                        <th>Calories</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="foodTableBody"></tbody>
+            </table>
+
+            <button class="add-food-btn" onclick="openModal()">新增運動</button>
+
+            <!-- Modal -->
+            <div id="myModal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeModal()">&times;</span>
+                    <h2>Add Food</h2>
+                    <form id="foodForm">
+                        <label for="foodName">運動名稱: &emsp;</label>
+                        <input type="text" id="foodName" name="foodName"><br><br>
+                        <label for="quantity">時間: &emsp;&emsp;&emsp;</label>
+                        <input type="text" id="quantity" name="quantity"><br><br>
+                        <label for="calories">卡路里: &emsp;&emsp;</label>
+                        <input type="number" id="calories" name="calories"><br><br>
+                        <input type="button" id="modalAddFood" value="Add" onclick="addFood()">
+                    </form>
                 </div>
-                <div class="weekdays">
-                    <div>Sun</div>
-                    <div>Mon</div>
-                    <div>Tue</div>
-                    <div>Wed</div>
-                    <div>Thu</div>
-                    <div>Fri</div>
-                    <div>Sat</div>
-                </div>
-                <div class="days"></div>
-                <div class="goto-today">
-                    <div class="goto">
-                        <input type="text" placeholder="mm/yyyy" class="date-input" />
-                        <button class="goto-btn">Go</button>
-                    </div>
-                    <button class="exerciseSuggest-btn">推薦運動</button>
-                    <button class="today-btn">Today</button>
-                </div>
+            </div>
+            <div id="totalCalory">&emsp;總熱量: 0 大卡</p>
             </div>
         </div>
-        <div class="right">
-            <div class="today-date">
-                <div class="event-day">wed</div>
-                <div class="event-date">12th december 2022</div>
-            </div>
-            <div class="events"></div>
-            <div class="add-event-wrapper">
-                <div class="add-event-header">
-                    <div class="title">新增運動</div>
-                    <i class="fas fa-times close"></i>
-                </div>
-                <div class="add-event-body">
-                    <div class="add-event-input">
-                        <input type="text" placeholder="運動名稱" class="food-name" />
-                    </div>
-                    <div class="add-event-input">
-                        <input type="text" placeholder="時長(分鐘)" class="time" />
-                    </div>
-                    <div class="add-event-input">
-                        <input type="text" placeholder="消耗卡路里(kcal)" class="calory" />
-                    </div>
-                </div>
-                <div class="add-event-footer">
-                    <button class="add-event-btn">新增</button>
-                </div>
-            </div>
-        <button class="add-event">+</button>
-        <div class="total-calory" id="total-calory"> &emsp;總消耗熱量:200 kcal</div><br>
-        <div>&emsp;&emsp;&emsp;<img src="../img/image.png" id="chartPic"></div>
-    </div>
-    
-    <script type="text/javascript" src="../js/exercise.js" charset="UTF-8"></script>
+        <script type="text/javascript" src="../js/Food.js" charset="UTF-8"></script>
 </body>
+
 </html>

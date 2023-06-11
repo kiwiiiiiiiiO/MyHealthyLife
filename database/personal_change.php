@@ -6,7 +6,7 @@
 
     // 設定初始值，如果沒有設定，當使用者沒有選擇 select ， 就會是 null QQQQ
     // happy
-    $weekly_goal_c = 'weeklygoal_1';
+    $weekly_goal_c = 'weeklygoal_2';
     $activity_c ='activity_1';
 
     $name_c = $_POST['name_c'];
@@ -24,7 +24,7 @@
     $weight_goal_c = (int)$_POST['weight_goal_c'];
     
     $weekly_goal_c = $_POST['weekly_goal_c'];
-    if(  $weekly_goal_c == ""){
+    if( $weekly_goal_c == ""){
         $weekly_goal_c = $weekly_goal;
     }
    

@@ -49,7 +49,7 @@
                 if(isset($result['user_id'])){
                     $_SESSION["userid"] = $result['user_id'];    
                 } 
-                header("location: ../project/home.php"); 
+                header("location: ../project/home.html"); 
             }else{
                 echo "<script>alert('帳號或密碼錯誤');
                 window.location.href='../project/signin.php';
@@ -67,7 +67,7 @@
         public function updatePerson($user_id,$name, $password,$birth, $cellphone, $weight, $height, $weight_goal, $weekly_goal, $activity, $water){
             $this->openDB();
             // $userid, $name_c, $password_c, $birth_c, $cellphone_c, $weight_c, $height_c, $weight_goal_c, $weekly_goal_c, $activity_c, $water_c
-            $sql = "UPDATE User SET `name`='".$name."' ,`password`='".$password."',`birth`='".$birth."',`cellphone`='".$cellphone."',`weight`='".$weight."',`height`='".$height."', `weight_goal`='".$weight_goal."',`activity`='".$activity."', `water`='".$water."' WHERE user_id ='".$user_id."';";
+            $sql = "UPDATE User SET `name`='".$name."' ,`password`='".$password."',`birth`='".$birth."',`cellphone`='".$cellphone."',`weight`='".$weight."',`height`='".$height."', `weight_goal`='".$weight_goal."',`weekly_goal`='".$weekly_goal."',`activity`='".$activity."', `water`='".$water."' WHERE user_id ='".$user_id."';";
             if(!mysqli_query($this->link, $sql)){
                 echo "wrong"; 
             }

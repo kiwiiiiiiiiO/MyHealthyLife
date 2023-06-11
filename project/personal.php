@@ -45,7 +45,7 @@
                     <li class="function"><a href="foodtest.html">食物日記</a></li>
                     <li class="calculate"><a href="chart.html">統計報表</a></li>
                     <li class="team active"><a href="personal.php">使用者設定</a></li>
-                    <li class="signin"><a href="welcome.html">登出</a></li>
+                    <li class="signin"><a href="welcome.html" action="sesstion_destroy">登出</a></li>
                 </ul>
             </div>
         </nav>
@@ -67,6 +67,10 @@
                         <tr>
                             <td colspan="2"><strong>電子郵件</strong></td>
                             <td colspan="5"><?php echo $email; ?></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><strong>密碼</strong></td>
+                            <td colspan="5"><?php echo $password; ?></td>
                         </tr>
                         <tr>
                             <td colspan="2"><strong>手機號碼</strong></td>
@@ -119,6 +123,10 @@
                         <tr>
                             <td colspan="2"><strong>電子郵件</strong></td>
                             <td colspan="3"><?php echo $email; ?></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><strong>密碼</strong></td>
+                            <td colspan="3"><input name="password_c" value=<?php echo $password; ?>></td>
                         </tr>
                         <tr>
                             <td colspan="2"><strong>手機號碼</strong></td>

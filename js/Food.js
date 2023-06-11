@@ -175,3 +175,12 @@ function deleteRow(row) {
     var rowIndex = row.rowIndex;
     table.deleteRow(rowIndex);
 }
+
+//總熱量
+function totalCalory(caloriesCell) {
+    const caloryInput = document.getElementById('caloriesCell');
+    const caloryToAdd = Number(caloryInput.value);
+    caloriesCell += caloryToAdd;
+    totalCalory.textContent = `總熱量：${caloriesCell} 大卡`;
+    caloryInput.value = 0;
+}

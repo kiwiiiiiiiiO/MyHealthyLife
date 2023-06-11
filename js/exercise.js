@@ -1,394 +1,186 @@
-const calendar = document.querySelector(".calendar"),
-    date = document.querySelector(".date"),
-    daysContainer = document.querySelector(".days"),
-    prev = document.querySelector(".prev"),
-    next = document.querySelector(".next"),
-    todayBtn = document.querySelector(".today-btn"),
-    exerciseSuggestBtn = document.querySelector(".exerciseSuggest-btn")
-    gotoBtn = document.querySelector(".goto-btn"),
-    dateInput = document.querySelector(".date-input"),
-    eventDay = document.querySelector(".event-day"),
-    eventDate = document.querySelector(".event-date"),
-    eventsContainer = document.querySelector(".events"),
-    addEventBtn = document.querySelector(".add-event"),
-    addEventWrapper = document.querySelector(".add-event-wrapper "),
-    addEventCloseBtn = document.querySelector(".close "),
-    addEventTitle = document.querySelector(".food-name "),
-    addEventTime = document.querySelector(".time "),
-    addEventCalory = document.querySelector(".calory "),
-    addEventSubmit = document.querySelector(".add-event-btn ");
+var selectedDate = null;
 
-let today = new Date();
-let activeDay;
-let month = today.getMonth();
-let year = today.getFullYear();
+// 建立日曆
+function createCalendar(year, month) {
+    var calendar = document.getElementById("calendar");
+    var currentDate = new Date(year, month - 1, 1);
+    var currentYear = currentDate.getFullYear();
+    var currentMonth = currentDate.getMonth();
 
-const months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-];
+    // 獲取當前月份第一天
+    var firstDay = new Date(currentYear, currentMonth, 1);
+    var startingDay = firstDay.getDay();
 
-const eventsArr = [];
-getEvents();
-console.log(eventsArr);
+    // 獲取當前月份總天數
+    var totalDays = new Date(currentYear, currentMonth + 1, 0).getDate();
 
-//function to add days in days with class day and prev-date next-date on previous month and next month days and active on today
-function initCalendar() {
-    const firstDay = new Date(year, month, 1);
-    const lastDay = new Date(year, month + 1, 0);
-    const prevLastDay = new Date(year, month, 0);
-    const prevDays = prevLastDay.getDate();
-    const lastDate = lastDay.getDate();
-    const day = firstDay.getDay();
-    const nextDays = 7 - lastDay.getDay() - 1;
+    // 建日曆表格
+    var table = document.createElement("table");
 
-    date.innerHTML = months[month] + " " + year;
+    // th星期一到日
+    var thead = document.createElement("thead");
+    var daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    var tr = document.createElement("tr");
 
-    let days = "";
-
-    for (let x = day; x > 0; x--) {
-        days += `<div class="day prev-date">${prevDays - x + 1}</div>`;
+    for (var i = 0; i < 7; i++) {
+        var th = document.createElement("th");
+        th.textContent = daysOfWeek[i];
+        tr.appendChild(th);
     }
 
-    for (let i = 1; i <= lastDate; i++) {
-        //check if event is present on that day
-        let event = false;
-        eventsArr.forEach((eventObj) => {
-            if (
-                eventObj.day === i &&
-                eventObj.month === month + 1 &&
-                eventObj.year === year
-            ) {
-                event = true;
-            }
-        });
-        if (
-            i === new Date().getDate() &&
-            year === new Date().getFullYear() &&
-            month === new Date().getMonth()
-        ) {
-            activeDay = i;
-            getActiveDay(i);
-            updateEvents(i);
-            if (event) {
-                days += `<div class="day today active event">${i}</div>`;
+    thead.appendChild(tr);
+    table.appendChild(thead);
+
+    // 建立日期格
+    var tbody = document.createElement("tbody");
+    var day = 1;
+
+    for (var i = 0; i < 6; i++) {
+        var tr = document.createElement("tr");
+
+        for (var j = 0; j < 7; j++) {
+            if (i === 0 && j < startingDay) {
+                var td = document.createElement("td");
+                tr.appendChild(td);
+            } else if (day <= totalDays) {
+                var td = document.createElement("td");
+                td.textContent = day;
+                td.addEventListener("click", function () {
+                    selectDate(this);
+                });
+                tr.appendChild(td);
+                day++;
             } else {
-                days += `<div class="day today active">${i}</div>`;
+                var td = document.createElement("td");
+                tr.appendChild(td);
             }
+        }
+
+        tbody.appendChild(tr);
+    }
+
+    table.appendChild(tbody);
+    calendar.innerHTML = "";
+    calendar.appendChild(table);
+}
+
+// 選日期
+function selectDate(cell) {
+    var selectedCells = document.getElementsByClassName("selected");
+
+    // 移除之前選中的日期狀態
+    while (selectedCells.length > 0) {
+        selectedCells[0].classList.remove("selected");
+    }
+
+    // 把狀態新增到現在選擇的日期格
+    cell.classList.add("selected");
+
+    // 獲取日期
+    var date = cell.textContent;
+
+    selectedDate = date;
+
+    // 隱藏其他日期的食物
+    var foodRows = document.getElementsById("foodTable");
+
+    for (var i = 0; i < foodRows.length; i++) {
+        var row = foodRows[i];
+        var rowDate = row.getAttribute("data-date");
+
+        if (rowDate === selectedDate) {
+            row.style.display = "table-row";
         } else {
-            if (event) {
-                days += `<div class="day event">${i}</div>`;
-            } else {
-                days += `<div class="day ">${i}</div>`;
-            }
+            row.style.display = "none";
         }
     }
-
-    for (let j = 1; j <= nextDays; j++) {
-        days += `<div class="day next-date">${j}</div>`;
-    }
-    daysContainer.innerHTML = days;
-    addListner();
 }
 
-//function to add month and year on prev and next button
-function prevMonth() {
-    month--;
-    if (month < 0) {
-        month = 11;
-        year--;
-    }
-    initCalendar();
+// 變更年份及月份
+function changeCalendar() {
+    var yearInput = document.getElementById("year");
+    var monthInput = document.getElementById("month");
+    var year = parseInt(yearInput.value);
+    var month = parseInt(monthInput.value);
+
+    createCalendar(year, month);
 }
 
-function nextMonth() {
-    month++;
-    if (month > 11) {
-        month = 0;
-        year++;
-    }
-    initCalendar();
-}
+// 建立初始表格
+createCalendar(2023, 5);
 
-prev.addEventListener("click", prevMonth);
-next.addEventListener("click", nextMonth);
+// **********************************************************************************************************
 
-initCalendar();
-
-//function to add active on day
-function addListner() {
-    const days = document.querySelectorAll(".day");
-    days.forEach((day) => {
-        day.addEventListener("click", (e) => {
-            getActiveDay(e.target.innerHTML);
-            updateEvents(Number(e.target.innerHTML));
-            activeDay = Number(e.target.innerHTML);
-            //remove active
-            days.forEach((day) => {
-                day.classList.remove("active");
-            });
-            //if clicked prev-date or next-date switch to that month
-            if (e.target.classList.contains("prev-date")) {
-                prevMonth();
-                //add active to clicked day afte month is change
-                setTimeout(() => {
-                    //add active where no prev-date or next-date
-                    const days = document.querySelectorAll(".day");
-                    days.forEach((day) => {
-                        if (
-                            !day.classList.contains("prev-date") &&
-                            day.innerHTML === e.target.innerHTML
-                        ) {
-                            day.classList.add("active");
-                        }
-                    });
-                }, 100);
-            } else if (e.target.classList.contains("next-date")) {
-                nextMonth();
-                //add active to clicked day afte month is changed
-                setTimeout(() => {
-                    const days = document.querySelectorAll(".day");
-                    days.forEach((day) => {
-                        if (
-                            !day.classList.contains("next-date") &&
-                            day.innerHTML === e.target.innerHTML
-                        ) {
-                            day.classList.add("active");
-                        }
-                    });
-                }, 100);
-            } else {
-                e.target.classList.add("active");
-            }
-        });
-    });
-}
-
-todayBtn.addEventListener("click", () => {
-    today = new Date();
-    month = today.getMonth();
-    year = today.getFullYear();
-    initCalendar();
-});
-
-exerciseSuggestBtn.addEventListener("click", () => {
-    let exerciseTime = prompt("請輸入今天能運動的時間(分鐘):D");
-    alert("推薦的運動為: 慢跑30分鐘");
-});
-
-dateInput.addEventListener("input", (e) => {
-    dateInput.value = dateInput.value.replace(/[^0-9/]/g, "");
-    if (dateInput.value.length === 2) {
-        dateInput.value += "/";
-    }
-    if (dateInput.value.length > 7) {
-        dateInput.value = dateInput.value.slice(0, 7);
-    }
-    if (e.inputType === "deleteContentBackward") {
-        if (dateInput.value.length === 3) {
-            dateInput.value = dateInput.value.slice(0, 2);
-        }
-    }
-});
-
-gotoBtn.addEventListener("click", gotoDate);
-
-function gotoDate() {
-    console.log("here");
-    const dateArr = dateInput.value.split("/");
-    if (dateArr.length === 2) {
-        if (dateArr[0] > 0 && dateArr[0] < 13 && dateArr[1].length === 4) {
-            month = dateArr[0] - 1;
-            year = dateArr[1];
-            initCalendar();
-            return;
-        }
-    }
-    alert("Invalid Date");
-}
-
-//function get active day day name and date and update eventday eventdate
-function getActiveDay(date) {
-    const day = new Date(year, month, date);
-    const dayName = day.toString().split(" ")[0];
-    eventDay.innerHTML = dayName;
-    eventDate.innerHTML = date + " " + months[month] + " " + year;
-}
-
-//function update events when a day is active
-function updateEvents(date) {
-    let events = "";
-    eventsArr.forEach((event) => {
-        if (
-            date === event.day &&
-            month + 1 === event.month &&
-            year === event.year
-        ) {
-            event.events.forEach((event) => {
-                events += `<div class="event">
-                                <div class="title">
-                                    <i class="fas fa-circle"></i>
-                                    <h3 class="event-title">${event.title}</h3>
-                                </div>
-                                <div class="event-time">
-                                    <span class="event-time">${event.inputData}</span>
-                                </div>
-                            </div>`;
-            });
-        }
-    });
-    if (events === "") {
-        events = `<div class="no-event">
-            <h3>No Events</h3>
-        </div>`;
-    }
-    eventsContainer.innerHTML = events;
-    saveEvents();
-}
-
-//function to add event
-addEventBtn.addEventListener("click", () => {
-    addEventWrapper.classList.toggle("active");
-});
-
-addEventCloseBtn.addEventListener("click", () => {
-    addEventWrapper.classList.remove("active");
-});
-
-document.addEventListener("click", (e) => {
-    if (e.target !== addEventBtn && !addEventWrapper.contains(e.target)) {
-        addEventWrapper.classList.remove("active");
-    }
-});
-
-//allow 50 chars in eventtitle
-addEventTitle.addEventListener("input", (e) => {
-    addEventTitle.value = addEventTitle.value.slice(0, 60);
-});
-
-//function to add event to eventsArr
-addEventSubmit.addEventListener("click", () => {
-    const eventTitle = addEventTitle.value;
-    const eventTime = addEventTime.value;
-    const eventCalory = addEventCalory.value;
-    if (eventTitle === "" || eventTime === "" || eventCalory === "") {
-        alert("Please fill all the fields");
+// 開啟modal
+function openModal() {
+    if (selectedDate === null) {
+        alert("Please choose a date first！");
         return;
     }
+    var modal = document.getElementById("myModal");
+    modal.style.display = "block";
+    // 清除表單輸入欄位的值
+    foodName.value = '';
+    quantity.value = '';
+    calories.value = '';
+}
 
-    //check if event is already added
-    let eventExist = false;
-    eventsArr.forEach((event) => {
-        if (
-            event.day === activeDay &&
-            event.month === month + 1 &&
-            event.year === year
-        ) {
-            event.events.forEach((event) => {
-                if (event.title === eventTitle) {
-                    eventExist = true;
-                }
-            });
+// 關閉modal
+function closeModal() {
+    var modal = document.getElementById("myModal");
+    modal.style.display = "none";
+}
+
+
+
+// 新增食物到food table
+function addFood() {
+
+    var foodName = document.getElementById("foodName").value;
+    var quantity = document.getElementById("quantity").value;
+    var calories = document.getElementById("calories").value;
+
+    var tableBody = document.getElementById("foodTableBody");
+
+    var row = tableBody.insertRow(-1);
+
+    var dateCell = row.insertCell(0);
+    var foodNameCell = row.insertCell(1);
+    var quantityCell = row.insertCell(2);
+    var caloriesCell = row.insertCell(3);
+    var deleteCell = row.insertCell(4);
+
+    dateCell.innerHTML = selectedDate;
+    foodNameCell.innerHTML = foodName;
+    quantityCell.innerHTML = quantity;
+    caloriesCell.innerHTML = calories;
+
+    var deleteButton = document.createElement("button");
+    deleteButton.innerHTML = "Delete";
+    deleteButton.classList.add("delete-button"); // 幫delete-button加上class name，改css用
+    deleteButton.onclick = function () {
+        var yes = confirm('Are you sure to delete it?');
+        if (yes) {
+            deleteRow(row);
         }
-    });
-    if (eventExist) {
-        alert("Event already added");
-        return;
-    }
-    const newEvent = {
-        title: eventTitle,
-        inputData: "運動時長: " + eventTime + " (分鐘)" + ", 消耗卡路里: " + eventCalory + " (kcal)",
-        calory: eventCalory
     };
-    console.log(newEvent);
-    console.log(activeDay);
-    let eventAdded = false;
-    if (eventsArr.length > 0) {
-        eventsArr.forEach((item) => {
-            if (
-                item.day === activeDay &&
-                item.month === month + 1 &&
-                item.year === year
-            ) {
-                item.events.push(newEvent);
-                eventAdded = true;
-            }
-        });
-    }
+    deleteCell.appendChild(deleteButton);
 
-    if (!eventAdded) {
-        eventsArr.push({
-            day: activeDay,
-            month: month + 1,
-            year: year,
-            events: [newEvent],
-        });
-    }
-    console.log(eventsArr);
-    addEventWrapper.classList.remove("active");
-    addEventTitle.value = "";
-    addEventTime.value = "";
-    addEventCalory.value = "";
-    updateEvents(activeDay);
-    //select active day and add event class if not added
-    const activeDayEl = document.querySelector(".day.active");
-    if (!activeDayEl.classList.contains("event")) {
-        activeDayEl.classList.add("event");
-    }
-});
-
-//function to delete event when clicked on event
-eventsContainer.addEventListener("click", (e) => {
-    if (e.target.classList.contains("event")) {
-        if (confirm("確定要刪除這個活動嗎?")) {
-            const eventTitle = e.target.children[0].children[1].innerHTML;
-            eventsArr.forEach((event) => {
-                if (
-                    event.day === activeDay &&
-                    event.month === month + 1 &&
-                    event.year === year
-                ) {
-                    event.events.forEach((item, index) => {
-                        if (item.title === eventTitle) {
-                            event.events.splice(index, 1);
-                        }
-                    });
-                    //if no events left in a day then remove that day from eventsArr
-                    if (event.events.length === 0) {
-                        eventsArr.splice(eventsArr.indexOf(event), 1);
-                        //remove event class from day
-                        const activeDayEl = document.querySelector(".day.active");
-                        if (activeDayEl.classList.contains("event")) {
-                            activeDayEl.classList.remove("event");
-                        }
-                    }
-                }
-            });
-            updateEvents(activeDay);
-        }
-    }
-});
-
-//function to save events in local storage
-function saveEvents() {
-    localStorage.setItem("events", JSON.stringify(eventsArr));
+    closeModal();
 }
 
-//function to get events from local storage
-function getEvents() {
-    //check if events are already saved in local storage then return event else nothing
-    if (localStorage.getItem("events") === null) {
-        return;
-    }
-    eventsArr.push(...JSON.parse(localStorage.getItem("events")));
+// 刪除食物
+function deleteRow(row) {
+    var table = document.getElementById("foodTable");
+    var rowIndex = row.rowIndex;
+    table.deleteRow(rowIndex);
+}
+
+//總熱量
+function totalCalory(caloriesCell) {
+    const caloryInput = document.getElementById('caloriesCell');
+    const caloryToAdd = Number(caloryInput.value);
+    caloriesCell += caloryToAdd;
+    totalCalory.textContent = `總熱量：${caloriesCell} 大卡`;
+    caloryInput.value = 0;
 }

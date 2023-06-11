@@ -49,7 +49,7 @@
                 if(isset($result['user_id'])){
                     $_SESSION["userid"] = $result['user_id'];    
                 } 
-                header("location: ../project/home.html"); 
+                header("location: ../project/home.php"); 
             }else{
                 echo "<script>alert('帳號或密碼錯誤');
                 window.location.href='../project/signin.php';

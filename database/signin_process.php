@@ -3,8 +3,8 @@
     session_start();
     require "master.php";
 
-    $name=$_SESSION["name"];
-    $user_id=$_SESSION["user_id"];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
 
     $helper = new master();
     // doLogin 

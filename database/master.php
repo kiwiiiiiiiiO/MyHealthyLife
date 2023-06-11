@@ -43,7 +43,6 @@
             $result = mysqli_query($this->link, $sql);
             if(mysqli_num_rows($result)==1 && $password == mysqli_fetch_assoc($result)["password"]){
                 session_start();
-                $result = mysqli_fetch_assoc($result);
                 $_SESSION["loggedin"] = true;
                 // Sesstion 
                 if(isset($result['user_id'])){
@@ -63,14 +62,6 @@
             $result = mysqli_query($this->link, $sql);
             $result = mysqli_fetch_assoc($result);
             return $result;
-        }
-        public function updatePerson($user_id,$name, $password,$birth, $cellphone, $weight, $height, $weight_goal, $weekly_goal, $activity, $water){
-            $this->openDB();
-            // $userid, $name_c, $password_c, $birth_c, $cellphone_c, $weight_c, $height_c, $weight_goal_c, $weekly_goal_c, $activity_c, $water_c
-            $sql = "UPDATE User SET `name`='".$name."' ,`password`='".$password."',`birth`='".$birth."',`cellphone`='".$cellphone."',`weight`='".$weight."',`height`='".$height."', `weight_goal`='".$weight_goal."',`activity`='".$activity."', `water`='".$water."' WHERE user_id ='".$user_id."';";
-            if(!mysqli_query($this->link, $sql)){
-                echo "wrong"; 
-            }
         }
     }
 

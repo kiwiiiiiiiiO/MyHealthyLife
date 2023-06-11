@@ -3,60 +3,20 @@
     session_start();
     require "master.php";
     
+    $user_id = $_SESSION["user_id"];
+
     $helper = new master();
-    $userid = 100000; 
-    $result = $helper->findPerson($userid);
-    $name =  $result["name"];
-    $password = $result["password"];
+
+    $result = $helper->doLogin($email, $password);
+    
+    $name = $_SESSION["name"];
+    $gender = $result["gender"];
     $birth = $result["birth"];
     $email = $result["email"];
     $cellphone = $result["cellphone"];
     $water = $result["water"];
-   
-    $weight = $result['weight'];
-    $height = $result['height'];
-
-    $weight_goal = $result['weight_goal'];
-    $activity_m  = $result["activity"];
-    switch($activity_m){
-        case 'activity_0':
-            $activity_m = "基本不動";
-            break;
-        case 'activity_1':
-            $activity_m = "不太活躍";
-            break;
-        case 'activity_2':
-            $activity_m = "稍微活躍";
-            break;  
-        case 'activity_3':
-            $activity_m = "活躍";
-            break;
-        case 'activity_4':
-            $activity_m = "非常活躍";
-            break;
-    }
-    $activity =  $activity_m;
-
-    $weekly_goal_m = $result["weekly_goal"];
-
-    if($weekly_goal_m == 'weeklygoal_1'){
-        $weekly_goal_m = "減重0.25kg";
-    }else if($weekly_goal_m == "weeklygoal_2"){
-        $weekly_goal_m = '減重0.5kg';
-    }else if($weekly_goal_m == "weeklygoal_3"){
-        $weekly_goal_m = '減重1kg';
-    }else if($weekly_goal_m == "weeklygoal_4"){
-        $weekly_goal_m = '維持體重';
-    }else if($weekly_goal_m == "weeklygoal_5"){
-        $weekly_goal_m = '增重0.25kg';
-    }else if($weekly_goal_m == "weeklygoal_6"){
-        $weekly_goal_m = '增重0.5kg';
-    }else if($weekly_goal_m == "weeklygoal_7"){
-        $weekly_goal_m = '增重1kg';
-    }else{
-        $weekly_goal_m = 'nono';
-    }
-
-    $weekly_goal = $weekly_goal_m;
+    $water = $result["water"];
+    $weekly_goal = $result["weekly_goal"];
+    // weekly_goal 
     
 ?>

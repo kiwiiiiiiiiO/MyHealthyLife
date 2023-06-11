@@ -40,7 +40,7 @@
         <nav>
             <div class="container">
                 <ul>
-                    <li class="home "><a href="home.php">MyHealthyLife</a></li>
+                    <li class="home "><a href="home.html">MyHealthyLife</a></li>
                     <li class="about"><a href="exercise.html">運動日記</a></li>
                     <li class="function"><a href="foodtest.html">食物日記</a></li>
                     <li class="calculate"><a href="chart.html">統計報表</a></li>
@@ -61,6 +61,10 @@
                             <td colspan="5"><?php echo $name; ?></td>
                         </tr>
                         <tr>
+                            <td colspan="2"><strong>性別</strong></td>
+                            <td colspan="5"><?php echo $gender; ?></td>
+                        </tr>
+                        <tr>
                             <td colspan="2"><strong>生日</strong></td>
                             <td colspan="5"><?php echo $birth; ?></td>
                         </tr>
@@ -73,31 +77,12 @@
                             <td colspan="5"><?php echo $cellphone; ?></td>
                         </tr>
                         <tr>
-                            <td colspan="2"><strong>身高</strong></td>
-                            <td colspan="3"><?php echo $height; ?></td>
-                        </tr>
-                        
-                        <tr>
-                            <td colspan="2"><strong>體重</strong></td>
-                            <td colspan="3"><?php echo $weight; ?></td>
-                        </tr>
-
-                        <tr>
-                            <td colspan="2"><strong>目標體重</strong></td>
-                            <td colspan="3"><?php echo $weight_goal; ?></td>
-                        </tr>
-
-                        <tr>
                             <td colspan="2"><strong>喝水量(cc)</strong></td>
                             <td colspan="5"><?php echo $water; ?></td>
                         </tr>
                         <tr>
-                            <td colspan="2"><strong>活動量</strong></td>
-                            <td colspan="5"><?php echo $activity; ?></td>
-                        </tr>
-                        <tr>
                             <td colspan="2"><strong>減重目標</strong></td>
-                            <td colspan="5"><?php echo $weekly_goal; ?></td>
+                            <td colspan="5">[<?php echo $weekly_goal; ?></td>
                         </tr>
                         <tr>
                             <td colspan="7"><button onclick="Edit()">修改資料</button></td>
@@ -106,54 +91,40 @@
                 </table>
             </ul>
         </div>
-        <form action="../database/personal_change.php" method="post" id="content" style="display:none">
+        <div id="content" style="display:none">
             <ul>
                 <h2>使用者資料</h2>
                 <table style="width: 400px;height: 400px;">
                     <ul>
                         <tr>
                             <td colspan="2"><strong>姓名</strong></td>
-                            <td colspan="3"><input name="name_c" value="<?php echo $name; ?>"></td>
+                            <td colspan="3"><input value="你的姓名"></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><strong>性別</strong></td>
+                            <td colspan="3"><input value="你的性別"></td>
                         </tr>
                         <tr>
                             <td colspan="2"><strong>生日</strong></td>
-                            <td colspan="3"><input name="birth_c" value="<?php echo $birth; ?>" name="birth_c" type="date"></td>
-                        </tr>
-                        <tr>
-                            <td colspan="2"><strong>密碼</strong></td>
-                            <td colspan="3"><input name="password_c" value="<?php echo $password; ?>" name="password _c" type="text"></td>
+                            <td colspan="3"><input value="你的生日"></td>
                         </tr>
                         <tr>
                             <td colspan="2"><strong>電子郵件</strong></td>
-                            <td colspan="3"><?php echo $email; ?></td>
+                            <td colspan="3"><input value="你的電子郵件"></td>
                         </tr>
                         <tr>
                             <td colspan="2"><strong>手機號碼</strong></td>
-                            <td colspan="3"><input  name="cellphone_c" value="<?php echo $cellphone ; ?>"></td>
+                            <td colspan="3"><input value="你的手機號碼"></td>
                         </tr>
-                        
-                        <tr>
-                            <td colspan="2"><strong>身高</strong></td>
-                            <td colspan="3"><input  name="height_c" value="<?php echo $height; ?>"></td>
-                        </tr>
-                        
-                        <tr>
-                            <td colspan="2"><strong>體重</strong></td>
-                            <td colspan="3"><input  name="weight_c" value="<?php echo $weight ; ?>"></td>
-                        </tr>
-
-                        <tr>
-                            <td colspan="2"><strong>目標體重</strong></td>
-                            <td colspan="3"><input  name="weight_goal_c" value="<?php echo $weight_goal ; ?>"></td>
-                        </tr>
-
                         <tr>
                             <td colspan="2"><strong>喝水量(cc)</strong></td>
-                            <td colspan="3"> <input name="water_c" type="range" id="myRange" min="0" max="3500" step="1" value="<?php echo $water ;?>">
-                                <output for="myRange"><?php echo $water; ?></output>
+                            <td colspan="3"> <input type="range" id="myRange" min="0" max="10000" step="1" value="1500">
+                                <output for="myRange">1500</output>
+
                                 <script>
                                     const range = document.getElementById('myRange');
                                     const output = document.querySelector('output[for="myRange"]');
+
                                     range.addEventListener('input', () => {
                                         output.textContent = range.value;
                                     });
@@ -161,37 +132,24 @@
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="2"><strong>活動量</strong></td>
-                            <td colspan="3">
-                                <select  name="activity_c">
-                                    <option type="radio" value="activity_0">基本不動</option>
-                                    <option type="radio" value="activity_1">不太活躍</option>
-                                    <option type="radio" value="activity_2">稍微活躍</option>
-                                    <option type="radio" value="activity_3">維持體重</option>
-                                    <option type="radio" value="activity_4">活躍</option>
-                                    <option type="radio" value="activity_5">非常活躍</option>
-                                </select></td>
-                        </tr>
-                        <tr>
                             <td colspan="2"><strong>減重目標</strong></td>
-                            <td colspan="3">
-                                <select name="weekly_goal_c">
-                                    <option value="weeklygoal_1">減重0.25kg</option>
-                                    <option value="weeklygoal_2">減重0.5kg</option>
-                                    <option value="weeklygoal_3">減重1kg</option>
-                                    <option value="weeklygoal_4">維持體重</option>
-                                    <option value="weeklygoal_5">增重0.25kg</option>
-                                    <option value="weeklygoal_6">增重0.5kg</option>
-                                    <option value="weeklygoal_7">增重1kg</option>
+                            <td colspan="3"><select>
+                                    <option value="option1">減重0.25kg</option>
+                                    <option value="option2">減重0.5kg</option>
+                                    <option value="option3">減重1kg</option>
+                                    <option value="option3">維持體重</option>
+                                    <option value="option3">增重0.25kg</option>
+                                    <option value="option3">增重0.5kg</option>
+                                    <option value="option3">增重1kg</option>
                                 </select></td>
                         </tr>
                         <tr>
-                            <td colspan="5"><button onclick="Submit()" type="submit" name="submitButton">修改資料</button></td>
+                            <td colspan="5"><button onclick="Submit()">修改資料</button></td>
                         </tr>
                     </ul>
                 </table>
             </ul>
-        </form>
+        </div>
     </main>
 
 </body>

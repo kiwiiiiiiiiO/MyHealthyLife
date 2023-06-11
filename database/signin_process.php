@@ -3,9 +3,11 @@
     session_start();
     require "master.php";
 
+   
     $email = $_POST['email'];
     $password = $_POST['password'];
 
+    
     $helper = new master();
     // doLogin 
 

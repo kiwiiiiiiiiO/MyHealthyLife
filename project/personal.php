@@ -58,31 +58,31 @@
                     <ul>
                         <tr>
                             <td colspan="2"><strong>姓名</strong></td>
-                            <td colspan="5">[你的姓名]</td>
+                            <td colspan="5"><?php echo $name; ?></td>
                         </tr>
                         <tr>
                             <td colspan="2"><strong>性別</strong></td>
-                            <td colspan="5">[你的性別]</td>
+                            <td colspan="5"><?php echo $gender; ?></td>
                         </tr>
                         <tr>
                             <td colspan="2"><strong>生日</strong></td>
-                            <td colspan="5">[你的生日]</td>
+                            <td colspan="5"><?php echo $birth; ?></td>
                         </tr>
                         <tr>
                             <td colspan="2"><strong>電子郵件</strong></td>
-                            <td colspan="5">[你的電子郵件]</td>
+                            <td colspan="5"><?php echo $email; ?></td>
                         </tr>
                         <tr>
                             <td colspan="2"><strong>手機號碼</strong></td>
-                            <td colspan="5">[你的手機號碼]</td>
+                            <td colspan="5"><?php echo $cellphone; ?></td>
                         </tr>
                         <tr>
                             <td colspan="2"><strong>喝水量(cc)</strong></td>
-                            <td colspan="5">[1500]</td>
+                            <td colspan="5"><?php echo $water; ?></td>
                         </tr>
                         <tr>
                             <td colspan="2"><strong>減重目標</strong></td>
-                            <td colspan="5">[你的減重目標]</td>
+                            <td colspan="5">[<?php echo $weekly_goal; ?></td>
                         </tr>
                         <tr>
                             <td colspan="7"><button onclick="Edit()">修改資料</button></td>

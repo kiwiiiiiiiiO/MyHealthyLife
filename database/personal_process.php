@@ -3,9 +3,20 @@
     session_start();
     require "master.php";
     
-    $name = $_SESSION["name"];
     $user_id = $_SESSION["user_id"];
 
-    
+    $helper = new master();
 
+    $result = $helper->doLogin($email, $password);
+    
+    $name = $_SESSION["name"];
+    $gender = $result["gender"];
+    $birth = $result["birth"];
+    $email = $result["email"];
+    $cellphone = $result["cellphone"];
+    $water = $result["water"];
+    $water = $result["water"];
+    $weekly_goal = $result["weekly_goal"];
+    // weekly_goal 
+    
 ?>

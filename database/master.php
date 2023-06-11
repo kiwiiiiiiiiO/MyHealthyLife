@@ -54,6 +54,14 @@
                 </script>";
             }
         }
+
+        public function findPerson($user_id){
+            $this->openDB();
+            $sql = "SELECT * FROM User WHERE user_id ='".$user_id."'";
+            $result = mysqli_query($this->link, $sql);
+            $result = mysqli_fetch_assoc($result);
+            return $result;
+        }
     }
 
 ?>

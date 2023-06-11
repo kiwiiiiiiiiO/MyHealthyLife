@@ -3,11 +3,12 @@
     session_start();
     require "master.php";
 
-    $email = $_POST['email'];
-    $password = $_POST['password'];
+    $name=$_SESSION["name"];
+    $user_id=$_SESSION["user_id"];
 
     $helper = new master();
     // doLogin 
+
     $helper->doLogin($email, $password);
 
 ?>

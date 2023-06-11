@@ -30,7 +30,7 @@ main h2{
 .rightDiv{
     margin-right: 100px;
     float:right;
-    background-color:  red;
+    background-color:  #0EA293;
 }
 .leftDiv{
     margin-left: 100px;
@@ -99,4 +99,13 @@ nav .container ul li.active a {
 
 .signin {
     float: right;
+}
+
+#BMIChart{
+    background-color: white;
+    width:50%;
+    max-width:500px;
+    height:50%;
+    max-height:200px;
+    border-radius: 6px;
 }

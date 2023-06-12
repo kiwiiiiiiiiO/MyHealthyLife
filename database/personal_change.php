@@ -1,5 +1,4 @@
 <?php
-
     session_start();
     require "master.php";
     $userid = 100000; 
@@ -8,21 +7,13 @@
     // happy
     $weekly_goal_c = 'weeklygoal_2';
     $activity_c ='activity_1';
-
     $name_c = $_POST['name_c'];
-
     $password_c = $_POST['password_c'];
-    
     $birth_c = $_POST['birth_c'];
-   
     $cellphone_c = $_POST['cellphone_c'];
-    
     $weight_c = (int)$_POST['weight_c'];
-    
     $height_c = (int)$_POST['height_c'];
-    
     $weight_goal_c = (int)$_POST['weight_goal_c'];
-    
     $weekly_goal_c = $_POST['weekly_goal_c'];
     if( $weekly_goal_c == ""){
         $weekly_goal_c = $weekly_goal;

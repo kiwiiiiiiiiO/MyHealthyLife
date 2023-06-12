@@ -64,6 +64,7 @@
             $result = mysqli_fetch_assoc($result);
             return $result;
         }
+        
         public function updatePerson($user_id,$name, $password,$birth, $cellphone, $weight, $height, $weight_goal, $weekly_goal, $activity, $water){
             $this->openDB();
             // $userid, $name_c, $password_c, $birth_c, $cellphone_c, $weight_c, $height_c, $weight_goal_c, $weekly_goal_c, $activity_c, $water_c

@@ -13,10 +13,8 @@
     $email = $result["email"];
     $cellphone = $result["cellphone"];
     $water = $result["water"];
-   
     $weight = $result['weight'];
     $height = $result['height'];
-
     $weight_goal = $result['weight_goal'];
     
     $activity_m  = $result["activity"];

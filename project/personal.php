@@ -165,9 +165,8 @@
                                     <option value="activity_0">基本不動</option>
                                     <option value="activity_1">不太活躍</option>
                                     <option value="activity_2">稍微活躍</option>
-                                    <option value="activity_3">維持體重</option>
-                                    <option value="activity_4">活躍</option>
-                                    <option value="activity_5">非常活躍</option>
+                                    <option value="activity_3">活躍</option>
+                                    <option value="activity_4">非常活躍</option>
                                 </select></td>
                         </tr>
                         <tr>

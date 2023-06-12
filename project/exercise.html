@@ -73,6 +73,25 @@
             </div>
         </div>
         <script type="text/javascript" src="../js/exercise.js" charset="UTF-8"></script>
+        <script>
+          
+               
+            
+
+            // Function to delete food entry
+            function deleteExercise(id) {
+                fetch("../database/DeleteExercise.php?id=" + id)
+                    .then(response => response.text())
+                    .then(result => {
+                        console.log(result);
+                        fetchExerciseData(); // Refresh the table data
+                    })
+                    .catch(error => console.error('Error:', error));
+            }
+
+            // Call the function to fetch and display food data
+            fetchExerciseData();
+        </script>
 </body>
 
 </html>

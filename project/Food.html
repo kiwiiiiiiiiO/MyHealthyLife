@@ -1,7 +1,7 @@
+<!DOCTYPE html>
 <html>
 
 <head>
-
     <title>食物日記</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../style/Food.css">
@@ -11,14 +11,14 @@
             <ul>
                 <li class="home"><a href="home.html">MyHealthyLife</a></li>
                 <li class="about"><a href="exercise.html">運動日記</a></li>
-                <li class="function active"><a href="Food.html ">食物日記</a></li>
+                <li class="function active"><a href="Food.html">食物日記</a></li>
                 <li class="calculate"><a href="chart.html">統計報表</a></li>
                 <li class="team"><a href="personal.php">使用者設定</a></li>
                 <li class="signin"><a href="welcome.html">登出</a></li>
+            </ul>
         </div>
     </nav>
 </head>
-
 
 <body>
     <br>
@@ -29,13 +29,10 @@
                 <input type="number" id="year" min="1900" max="2100" value="2023" onchange="changeCalendar()">
                 <label for="month">Month：</label>
                 <input type="number" id="month" min="1" max="12" value="5" onchange="changeCalendar()">
-                <!-- <button id="addWaterButton" onclick="showModal()">新增水量</button> -->
             </div>
             <br>
             <div id="calendar" class="calendar"></div>
-
         </div>
-
 
         <div class="vertical">
             <table id="foodTable" class="food-table">
@@ -69,10 +66,29 @@
                     </form>
                 </div>
             </div>
-            <div id="totalCalory">&emsp;總熱量: 0 大卡</p>
-            </div>
+
+            <div id="totalCalory">&emsp;總熱量: 0 大卡</div>
         </div>
+
         <script type="text/javascript" src="../js/Food.js" charset="UTF-8"></script>
+        <script>
+        
+
+            // Function to delete food entry
+            function deleteFood(id) {
+                fetch("../database/DeleteFood.php?id=" + id)
+                    .then(response => response.text())
+                    .then(result => {
+                        console.log(result);
+                        fetchFoodData(); // Refresh the table data
+                    })
+                    .catch(error => console.error('Error:', error));
+            }
+
+            // Call the function to fetch and display food data
+           
+        </script>
+    </div>
 </body>
 
 </html>

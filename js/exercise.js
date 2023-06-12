@@ -1,5 +1,7 @@
 var selectedDate = null;
-
+var selectedMonth = 5;
+var selectedYear = 2023;
+var totalCalories = 0; // Variable to store the total calories
 // 建立日曆
 function createCalendar(year, month) {
     var calendar = document.getElementById("calendar");
@@ -80,6 +82,38 @@ function selectDate(cell) {
     var date = cell.textContent;
 
     selectedDate = date;
+    fetch(`../database/GetExercise.php?date=${selectedYear + '-' + selectedMonth + '-' + date}`)
+    .then(response => response.json())
+    .then(data => {
+        const foodTableBody = document.getElementById("foodTableBody");
+        foodTableBody.innerHTML = ""; // Clear the table body
+
+       
+        totalCalories = 0; 
+        // Loop through the data and create table rows
+        data.forEach(row => {
+            if (row.date === `${selectedYear}-${selectedMonth.toString().padStart(2, '0')}-${date.toString().padStart(2, '0')}`) {
+                const tableRow = document.createElement("tr");
+                tableRow.innerHTML = `
+                    <td>${row.date}</td>
+                    <td>${row.exercise_name}</td>
+                    <td>${row.time}</td>
+                    <td>${row.calories}</td>
+                    <td><button onclick="deleteFood(${row.exercise_id})">Delete</button></td>
+                `;
+                foodTableBody.appendChild(tableRow);
+
+                totalCalories += parseInt(row.calories); // Add the calories to the total using parseInt to convert to an integer
+            } else {
+                const tableRow = document.createElement("tr");
+                tableRow.style.display = "none";
+                foodTableBody.appendChild(tableRow);
+            }
+        });
+        const totalCaloriesElement = document.getElementById("totalCalory");
+        totalCaloriesElement.innerText = `總熱量: ${totalCalories} 大卡`; // Set the inner text of the element to display the total calories
+    })
+    .catch(error => console.error('Error:', error));
 
     // 隱藏其他日期的食物
     var foodRows = document.getElementsById("foodTable");
@@ -102,7 +136,8 @@ function changeCalendar() {
     var monthInput = document.getElementById("month");
     var year = parseInt(yearInput.value);
     var month = parseInt(monthInput.value);
-
+    selectedMonth = parseInt(monthInput.value);
+    selectedYear = parseInt(yearInput.value);
     createCalendar(year, month);
 }
 
@@ -135,52 +170,47 @@ function closeModal() {
 
 // 新增食物到food table
 function addFood() {
-
     var foodName = document.getElementById("foodName").value;
     var quantity = document.getElementById("quantity").value;
     var calories = document.getElementById("calories").value;
+    // Create a FormData object
+    var formData = new FormData();
+    formData.append('foodName', foodName);
+    formData.append('quantity', quantity);
+    formData.append('calories', calories);
+    formData.append('date', selectedYear + '-' + selectedMonth + '-' + selectedDate);
 
-    var tableBody = document.getElementById("foodTableBody");
-
-    var row = tableBody.insertRow(-1);
-
-    var dateCell = row.insertCell(0);
-    var foodNameCell = row.insertCell(1);
-    var quantityCell = row.insertCell(2);
-    var caloriesCell = row.insertCell(3);
-    var deleteCell = row.insertCell(4);
-
-    dateCell.innerHTML = selectedDate;
-    foodNameCell.innerHTML = foodName;
-    quantityCell.innerHTML = quantity;
-    caloriesCell.innerHTML = calories;
-
-    var deleteButton = document.createElement("button");
-    deleteButton.innerHTML = "Delete";
-    deleteButton.classList.add("delete-button"); // 幫delete-button加上class name，改css用
-    deleteButton.onclick = function () {
-        var yes = confirm('Are you sure to delete it?');
-        if (yes) {
-            deleteRow(row);
-        }
-    };
-    deleteCell.appendChild(deleteButton);
-
-    closeModal();
+    fetch("../database/AddExercise.php", {
+        method: 'POST',
+        body: formData
+    })
+        .then(response => response.text())
+        .then(result => {
+            // Handle the response from PHP
+            console.log(result);
+            if (result === 'success') {
+                // Call a function to reload the table or update the UI
+                // reloadTable();
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+        closeModal();
 }
 
 // 刪除食物
-function deleteRow(row) {
-    var table = document.getElementById("foodTable");
-    var rowIndex = row.rowIndex;
-    table.deleteRow(rowIndex);
-}
+// function deleteRow(row) {
+//     var table = document.getElementById("foodTable");
+//     var rowIndex = row.rowIndex;
+//     table.deleteRow(rowIndex);
+// }
 
 //總熱量
-function totalCalory(caloriesCell) {
-    const caloryInput = document.getElementById('caloriesCell');
-    const caloryToAdd = Number(caloryInput.value);
-    caloriesCell += caloryToAdd;
-    totalCalory.textContent = `總熱量：${caloriesCell} 大卡`;
-    caloryInput.value = 0;
-}
+// function totalCalory(caloriesCell) {
+//     const caloryInput = document.getElementById('caloriesCell');
+//     const caloryToAdd = Number(caloryInput.value);
+//     caloriesCell += caloryToAdd;
+//     totalCalory.textContent = `總熱量：${caloriesCell} 大卡`;
+//     caloryInput.value = 0;
+// }

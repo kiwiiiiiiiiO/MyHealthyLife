@@ -19,11 +19,11 @@ main h2{
 }
 .rightDiv, .leftDiv{
     margin-top: 30px;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
     position: relative;
     height: 650px;
     width:40%;
-    padding: 20px;
+    padding: 50px;
     border-radius: 8px; 
     box-shadow: 0 10px 25px rgba(92, 99, 105, .8); 
 } 
@@ -37,10 +37,7 @@ main h2{
     float:left;
     background-color:  #0EA293;
 } 
-#BMIChart{
-    width:500px;
-    height:600px;
-}
+
 /* progress bar */
 .progress-container:before {
     content: attr(data-text);
@@ -104,8 +101,8 @@ nav .container ul li.active a {
 #BMIChart{
     background-color: white;
     width:50%;
-    max-width:500px;
+    max-width:600px;
     height:50%;
-    max-height:200px;
+    max-height:550px;
     border-radius: 6px;
 }

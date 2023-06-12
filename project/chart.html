@@ -80,21 +80,23 @@
 			margin-right: auto;
 		}
 
-		table {
+		#HeatTable {
 			font-family: arial, sans-serif;
 			border-collapse: collapse;
-
+			margin: 50px;
+			width: 100%;
+			display: center;
 		}
 
 		td,
 		th {
 			border: 1px solid #E2E3EE;
-			text-align: left;
+			border-radius: 6px;
+			text-align: center;
 			padding: 8px;
 		}
-
 		tr:nth-child(even) {
-			background-color: #A6ABD6;
+			background-color: #E1EEE7;
 		}
 
 		nav {
@@ -135,6 +137,15 @@
 		.signin {
     		float: right;
 		}
+		.btn-secondary{
+			border: 1px solid #0EA293;
+			background-color:  #0EA293;
+		}
+		.btn-group{
+			margin: 50px;
+			width: 95%;
+			height: 50px;
+		}
 	</style>
 </head>
 
@@ -145,7 +156,7 @@
 				<ul>
 					<li class="home "><a href="home.html">MyHealthyLife</a></li>
 					<li class="about"><a href="exercise.html">運動日記</a></li>
-					<li class="function"><a href="foodtest.html">食物日記</a></li>
+					<li class="function"><a href="food.html">食物日記</a></li>
 					<li class="calculate active"><a href="chart.html">統計報表</a></li>
 					<li class="team"><a href="personal.php">使用者設定</a></li>
 					<li class="signin"><a href="welcome.html">登出</a></li>
@@ -178,20 +189,26 @@
 				</ul>
 			</div>
 		</nav>
-		<div style="height: 70%;width: 80%;" class="center">
+		<div style="height:70%;width: 80%;" class="center">
 			<div></div>
 			<canvas id="BMIChart"></canvas>
 			<canvas id="WeightChart" style="display: none;"></canvas>
 			<canvas id="CaloriesChart" style="display: none;"></canvas>
 			<canvas id="HeatChart" style="display: none;"></canvas>
-			<div>
-				<button>周</button>
-				<button>月</button>
-				<button>年</button>
-			</div>
-			<div>
-				<table id="HeatTable" style="display: none;" class="center-table">
-					<tr style="background-color: #3241B8">
+			<div class="btn-group btn-group-toggle" data-toggle="buttons">
+				<label class="btn btn-secondary active">
+				  <input type="radio" name="options" id="option1" autocomplete="off" checked> 週
+				</label>
+				<label class="btn btn-secondary">
+				  <input type="radio" name="options" id="option2" autocomplete="off"> 月
+				</label>
+				<label class="btn btn-secondary">
+				  <input type="radio" name="options" id="option3" autocomplete="off"> 年
+				</label>
+			  </div>
+			  <div class="row justify-content-center">
+				<table id="HeatTable"  class="center-table" style="display: none;">
+					<tr style="background-color: #0EA293">
 						<td>日期</td>
 						<td>TDEE</td>
 						<td>食物攝取</td>
@@ -227,7 +244,7 @@
 						<td>盈</td>
 					</tr>
 				</table>
-			</div>
+			  </div>
 
 		</div>
 

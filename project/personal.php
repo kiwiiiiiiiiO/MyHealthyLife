@@ -42,7 +42,7 @@
                 <ul>
                     <li class="home "><a href="home.html">MyHealthyLife</a></li>
                     <li class="about"><a href="exercise.html">運動日記</a></li>
-                    <li class="function"><a href="Food.html">食物日記</a></li>
+                    <li class="function"><a href="food.html">食物日記</a></li>
                     <li class="calculate"><a href="chart.html">統計報表</a></li>
                     <li class="team active"><a href="personal.php">使用者設定</a></li>
                     <li class="signin"><a href="welcome.html" action="sesstion_destroy">登出</a></li>
@@ -101,7 +101,7 @@
                             <td colspan="5"><?php echo $weekly_goal; ?></td>
                         </tr>
                         <tr>
-                            <td colspan="7"><button onclick="Edit()">修改資料</button></td>
+                            <td colspan="7" style=" height: 80px;"><button style="border-radius: 5px;" onclick="Edit()">修改資料</button></td>
                         </tr>
                     </ul>
                 </table>
@@ -185,8 +185,8 @@
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="5">
-                                <button onclick="Submit()" type="submit">修改資料</button>
+                            <td colspan="5" style=" height: 80px;">
+                                <button style="border-radius: 5px;" onclick="Submit()" type="submit">修改資料</button>
                             </td>
                         </tr>
                     </ul>

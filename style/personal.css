@@ -14,12 +14,19 @@ table {
 }
 
 th,td {
-    border: 1px solid black;
+    border: 2px solid #344B47;
+    height: 50px;
+    width: 300px;
 }
-
+input{
+    border: 1px solid #0EA293;
+    width: 90%;
+    border-radius: 5px;
+}
 main{
     display: flex;
     background-color: white;
+    margin-top: 100px;
 }
 #content, .center{
     padding: 50px;
@@ -86,4 +93,16 @@ nav .container ul li.active a {
 }
 .signin {
     float: right;
+}
+button{
+    height: 45px;
+    width: 150px;
+    border: 1px solid  #0EA293;
+    margin: 2px;
+    background-color: #3cb994;
+    box-shadow: 0 10px 25px rgba(92, 99, 105, .5);
+}
+button:hover{
+    box-shadow: 0 10px 25px rgba(92, 99, 105, .8);
+    background-color: #67CA8A;
 }

@@ -18,8 +18,15 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 	<script>
 		function ShowBMI() {
+			document.getElementById("weekBtn").click();
 			BMIChart.style.display = "block";
+			BMIChart_m.styledisplay =  "none";
+			BMIChart_y.styledisplay =  "none";
+			
 			WeightChart.style.display = "none";
+			WeightChart_m.style.display = "none";
+			WeightChart_y.style.display = "none";
+
 			CaloriesChart.style.display = "none";
 			HeatChart.style.display = "none";
 			HeatTable.style.display = "none";
@@ -28,9 +35,51 @@
 			d.style.color = "gray";
 			b.style.color = "gray";
 		}
+		function ShowWeek(){
+			if(BMIChart.style.display == "block" || BMIChart_m.style.display == "block" || BMIChart_y.style.display == "block" ){
+				BMIChart.style.display = "block";
+				BMIChart_m.style.display =  "none";
+				BMIChart_y.style.display =  "none";
+
+			}else if(WeightChart.style.display == "block" || WeightChart_m.style.display == "block" || WeightChart_y.style.display == "block"){
+				WeightChart.style.display = "block";
+				WeightChart_m.style.display = "none";
+				WeightChart_y.style.display = "none";
+			}
+		}
+
+		function ShowMonth(){
+			if(BMIChart.style.display == "block" || BMIChart_m.style.display == "block" || BMIChart_y.style.display == "block" ){
+				BMIChart.style.display = "none";
+				BMIChart_m.style.display =  "block";
+				BMIChart_y.style.display =  "none";
+			}else if(WeightChart.style.display == "block" || WeightChart_m.style.display == "block" || WeightChart_y.style.display == "block"){
+				WeightChart.style.display = "none";
+				WeightChart_m.style.display = "block";
+				WeightChart_y.style.display = "none";
+			}
+		}
+		function ShowYear(){
+			if(BMIChart.style.display == "block" || BMIChart_m.style.display == "block" || BMIChart_y.style.display == "block" ){
+				BMIChart.style.display = "none";
+				BMIChart_m.style.display =  "none";
+				BMIChart_y.style.display =  "block";
+			}else if(WeightChart.style.display == "block" || WeightChart_m.style.display == "block" || WeightChart_y.style.display == "block"){
+				WeightChart.style.display = "none";
+				WeightChart_m.style.display = "none";
+				WeightChart_y.style.display = "block";
+			}
+		}
 		function ShowWeight() {
+			document.getElementById("weekBtn").click();
 			BMIChart.style.display = "none";
+			BMIChart_m.style.display =  "none";
+			BMIChart_y.style.display =  "none";
+
 			WeightChart.style.display = "block";
+			WeightChart_m.style.display = "none";
+			WeightChart_y.style.display = "none";
+
 			CaloriesChart.style.display = "none";
 			HeatChart.style.display = "none";
 			HeatTable.style.display = "none";
@@ -40,8 +89,15 @@
 			d.style.color = "gray";
 		}
 		function ShowCalories() {
+			document.getElementById("weekBtn").click();
 			BMIChart.style.display = "none";
+			BMIChart_m.style.display =  "none";
+			BMIChart_y.style.display =  "none";
+
 			WeightChart.style.display = "none";
+			WeightChart_m.style.display = "none";
+			WeightChart_y.style.display = "none";
+
 			CaloriesChart.style.display = "block";
 			HeatChart.style.display = "none";
 			HeatTable.style.display = "none";
@@ -51,8 +107,15 @@
 			b.style.color = "gray";
 		}
 		function ShowHeat() {
+			document.getElementById("weekBtn").click();
 			BMIChart.style.display = "none";
+			BMIChart_m.styledisplay =  "none";
+			BMIChart_y.styledisplay =  "none";
+
 			WeightChart.style.display = "none";
+			WeightChart_m.style.display = "none";
+			WeightChart_y.style.display = "none";
+
 			CaloriesChart.style.display = "none";
 			HeatChart.style.display = "block";
 			HeatTable.style.display = "block";
@@ -190,23 +253,33 @@
 			</div>
 		</nav>
 		<div style="height:70%;width: 80%;" class="center">
-			<div></div>
+			<div>
+
+			</div>
 			<canvas id="BMIChart"></canvas>
+			<canvas id="BMIChart_m"  style="display: none;"></canvas>
+			<canvas id="BMIChart_y" style="display: none;"></canvas>
+
 			<canvas id="WeightChart" style="display: none;"></canvas>
+			<canvas id="WeightChart_m" style="display: none;"></canvas>
+			<canvas id="WeightChart_y" style="display: none;"></canvas>
+
 			<canvas id="CaloriesChart" style="display: none;"></canvas>
 			<canvas id="HeatChart" style="display: none;"></canvas>
+
 			<div class="btn-group btn-group-toggle" data-toggle="buttons">
-				<label class="btn btn-secondary active">
-				  <input type="radio" name="options" id="option1" autocomplete="off" checked> 週
+				<label  class="btn btn-secondary active">
+				  <input id="weekBtn" type="radio" name="options" id="option1" onclick=" ShowWeek()" autocomplete="off" checked> 週
 				</label>
 				<label class="btn btn-secondary">
-				  <input type="radio" name="options" id="option2" autocomplete="off"> 月
+				  <input  id="monthBtn"  type="radio" name="options" id="option2" onclick="ShowMonth()" autocomplete="off"> 月
 				</label>
-				<label class="btn btn-secondary">
-				  <input type="radio" name="options" id="option3" autocomplete="off"> 年
+				<label id="yearBtn" class="btn btn-secondary">
+				  <input type="radio" name="options" id="option3" onclick=" ShowYear()" autocomplete="off"> 年
 				</label>
-			  </div>
-			  <div class="row justify-content-center">
+			</div>
+
+			<div class="row justify-content-center">
 				<table id="HeatTable"  class="center-table" style="display: none;">
 					<tr style="background-color: #0EA293">
 						<td>日期</td>
@@ -244,21 +317,22 @@
 						<td>盈</td>
 					</tr>
 				</table>
-			  </div>
+			</div>
 
 		</div>
 
 	</main>
 	<!-- Script -->
 	<script>
+		// BMI 週
 		var ctx = document.getElementById('BMIChart').getContext('2d');
 		var myChart = new Chart(ctx, {
 			type: 'line',
 			data: {
-				labels: ['一月', '二月', '三月', '四月', '五月', '六月', '七月'],
+				labels: ['星期一', '星期二', '星期三', '星期四', '星期五', '星期六', '星期日'],
 				datasets: [{
 					label: 'BMI報表',
-					data: [23, 23, 24, 24, 23, 22, 23],
+					data: [23.4, 23.6, 24.2, 24.0, 23.8, 23.5, 23.9],
 					backgroundColor: 'rgba(255, 99, 132, 0.2)',
 					borderColor: 'rgba(255, 99, 132, 1)',
 					borderWidth: 1
@@ -287,6 +361,81 @@
 		});
 	</script>
 	<script>
+		//  BMI 月
+		var ctx = document.getElementById('BMIChart_m');
+		var myChart = new Chart(ctx, {
+			type: 'line',
+			data: {
+				labels: ['前三週', '前兩週', '前一週', '當週平均'],
+				datasets: [{
+					label: 'BMI報表',
+					data: [24.5, 24.3, 24.6, 23.5 ],
+					backgroundColor: 'rgba(255, 99, 132, 0.2)',
+					borderColor: 'rgba(255, 99, 132, 1)',
+					borderWidth: 1
+				}]
+			},
+			options: {
+				responsive: true,
+				scales: {
+					y: {
+						display: true,
+						title: {
+							display: true,
+							text: 'BMI 體重(kg) / 身高*2(m*2)',
+							color: '#191',
+							font: {
+								family: 'Times',
+								size: 20,
+								style: 'normal',
+								lineHeight: 1.2
+							},
+							padding: { top: 30, left: 0, right: 0, bottom: 0 }
+						}
+					}
+				}
+			},
+		});
+	</script>
+	<script>
+		//  BMI 年
+		var ctx = document.getElementById('BMIChart_y');
+		var myChart = new Chart(ctx, {
+			type: 'line',
+			data: {
+				labels: ['一月', '二月', '三月', '四月','五月'],
+				datasets: [{
+					label: 'BMI報表',
+					data: [22.6, 23.5, 23.6, 24.2, 23.9],
+					backgroundColor: 'rgba(255, 99, 132, 0.2)',
+					borderColor: 'rgba(255, 99, 132, 1)',
+					borderWidth: 1
+				}]
+			},
+			options: {
+				responsive: true,
+				scales: {
+					y: {
+						display: true,
+						title: {
+							display: true,
+							text: 'BMI 體重(kg) / 身高*2(m*2)',
+							color: '#191',
+							font: {
+								family: 'Times',
+								size: 20,
+								style: 'normal',
+								lineHeight: 1.2
+							},
+							padding: { top: 30, left: 0, right: 0, bottom: 0 }
+						}
+					}
+				}
+			},
+		});
+	</script>
+	<script>
+		// 體重報表 週
 		var ctx = document.getElementById('WeightChart').getContext('2d');
 		var myChart = new Chart(ctx, {
 			type: 'line',
@@ -295,6 +444,80 @@
 				datasets: [{
 					label: '體重報表',
 					data: [75, 75.5, 75, 74, 74.5, 75, 75],
+					backgroundColor: 'rgba(255, 99, 132, 0.2)',
+					borderColor: 'rgba(255, 99, 132, 1)',
+					borderWidth: 1
+				}]
+			},
+			options: {
+				responsive: true,
+				scales: {
+					y: {
+						display: true,
+						title: {
+							display: true,
+							text: '體重(kg)',
+							color: '#191',
+							font: {
+								family: 'Times',
+								size: 20,
+								style: 'normal',
+								lineHeight: 1.2
+							},
+							padding: { top: 30, left: 0, right: 0, bottom: 0 }
+						}
+					}
+				}
+			},
+		});
+	</script>
+	<script>
+		// 體重報表 月
+		var ctx = document.getElementById('WeightChart_m');
+		var myChart = new Chart(ctx, {
+			type: 'line',
+			data: {
+				labels: ['前三週', '前兩週', '前一週', '當週平均'],
+				datasets: [{
+					label: '體重報表',
+					data: [75, 75.5, 75, 74.9],
+					backgroundColor: 'rgba(255, 99, 132, 0.2)',
+					borderColor: 'rgba(255, 99, 132, 1)',
+					borderWidth: 1
+				}]
+			},
+			options: {
+				responsive: true,
+				scales: {
+					y: {
+						display: true,
+						title: {
+							display: true,
+							text: '體重(kg)',
+							color: '#191',
+							font: {
+								family: 'Times',
+								size: 20,
+								style: 'normal',
+								lineHeight: 1.2
+							},
+							padding: { top: 30, left: 0, right: 0, bottom: 0 }
+						}
+					}
+				}
+			},
+		});
+	</script>
+	<script>
+		// 體重報表 年
+		var ctx = document.getElementById('WeightChart_y');
+		var myChart = new Chart(ctx, {
+			type: 'line',
+			data: {
+				labels: ['一月', '二月', '三月', '四月','五月'],
+				datasets: [{
+					label: '體重報表',
+					data: [73.8, 74.5, 75.7, 75.8, 75.9],
 					backgroundColor: 'rgba(255, 99, 132, 0.2)',
 					borderColor: 'rgba(255, 99, 132, 1)',
 					borderWidth: 1

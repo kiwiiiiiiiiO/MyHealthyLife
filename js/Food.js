@@ -1,5 +1,5 @@
 var selectedDate = null;
-var selectedMonth = 5;
+var selectedMonth = 6;
 var selectedYear = 2023;
 var totalCalories = 0; // Variable to store the total calories
 // 建立日曆
@@ -139,7 +139,7 @@ function changeCalendar() {
 }
 
 // 建立初始表格
-createCalendar(2023, 5);
+createCalendar(2023, 6);
 
 // **********************************************************************************************************
 
@@ -195,10 +195,14 @@ function addFood() {
 }
 
 // 刪除食物
-function deleteRow(row) {
-    var table = document.getElementById("foodTable");
-    var rowIndex = row.rowIndex;
-    table.deleteRow(rowIndex);
+function deleteFood(id) {
+    fetch("../database/DeleteFood.php?id=" + id)
+        .then(response => response.text())
+        .then(result => {
+            console.log(result);
+            fetchFoodData(); // Refresh the table data
+        })
+        .catch(error => console.error('Error:', error));
 }
 
 //總熱量

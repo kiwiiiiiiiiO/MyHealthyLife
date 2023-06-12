@@ -1,4 +1,11 @@
 var ctx = document.getElementById('BMIChart').getContext('2d');
+var currentDate = new Date();
+var selectedYear = currentDate.getFullYear();
+var selectedMonth = ('0' + (currentDate.getMonth() + 1)).slice(-2);
+var date = ('0' + currentDate.getDate()).slice(-2);
+var today = selectedYear + '-' + selectedMonth + '-' + date;
+let totalFoodCalories = 0; // Variable to store total food calories
+let totalExerciseCalories = 0; // Variable to store total exercise calories
 var myChart = new Chart(ctx, {
     type: 'line',
     data: {
@@ -33,3 +40,56 @@ var myChart = new Chart(ctx, {
             }
         },
 });
+fetch(`../database/GetFood.php?date=${today}`)
+			.then(response => response.json())
+			.then(data => {
+				const foodTableBody = document.getElementById("foodTableBody");
+				foodTableBody.innerHTML = ""; // Clear the table body
+			
+				// Loop through the data and create table rows
+				data.forEach(row => {
+					if (row.date === `${selectedYear}-${selectedMonth.toString().padStart(2, '0')}-${date.toString().padStart(2, '0')}`) {
+						const tableRow = document.createElement("tr");
+						tableRow.innerHTML = `
+							<td>${row.food_name}</td>
+							<td>${row.quantity}</td>
+							<td>${row.calories}</td>
+						`;
+						foodTableBody.appendChild(tableRow);
+						totalFoodCalories += parseInt(row.calories); // Add food calories to the total
+					} else {
+						const tableRow = document.createElement("tr");
+						tableRow.style.display = "none";
+						foodTableBody.appendChild(tableRow);
+					}
+				});
+				document.getElementById("remainingCalories").textContent = `1800 | ${ - totalFoodCalories}`;
+			})
+			.catch(error => console.error('Error:', error));
+		fetch(`../database/GetExercise.php?date=${today}`)
+			.then(response => response.json())
+			.then(data => {
+				const ExerciseTableBody = document.getElementById("ExerciseTableBody");
+				ExerciseTableBody.innerHTML = ""; // Clear the table body
+			
+				// Loop through the data and create table rows
+				data.forEach(row => {
+					if (row.date === `${selectedYear}-${selectedMonth.toString().padStart(2, '0')}-${date.toString().padStart(2, '0')}`) {
+						const tableRow = document.createElement("tr");
+						tableRow.innerHTML = `
+							<td>${row.exercise_name}</td>
+							<td>${row.time}</td>
+							<td>${row.calories}</td>
+						`;
+						ExerciseTableBody.appendChild(tableRow);
+						totalExerciseCalories += parseInt(row.calories); // Add exercise calories to the total
+					} else {
+						const tableRow = document.createElement("tr");
+						tableRow.style.display = "none";
+						ExerciseTableBody.appendChild(tableRow);
+					}
+				});
+				const remainingCalories = document.getElementById("remainingCalories");
+				remainingCalories.textContent = `${remainingCalories.textContent}+${totalExerciseCalories}=${- totalFoodCalories + totalExerciseCalories}`;
+			})
+			.catch(error => console.error('Error:', error));

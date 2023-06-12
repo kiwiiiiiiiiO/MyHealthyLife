@@ -71,23 +71,6 @@
         </div>
 
         <script type="text/javascript" src="../js/Food.js" charset="UTF-8"></script>
-        <script>
-        
-
-            // Function to delete food entry
-            function deleteFood(id) {
-                fetch("../database/DeleteFood.php?id=" + id)
-                    .then(response => response.text())
-                    .then(result => {
-                        console.log(result);
-                        fetchFoodData(); // Refresh the table data
-                    })
-                    .catch(error => console.error('Error:', error));
-            }
-
-            // Call the function to fetch and display food data
-           
-        </script>
     </div>
 </body>
 

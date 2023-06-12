@@ -44,72 +44,28 @@
 				</div>
 				<p>今天攝取食物:</p>
 				<div class="table-responsive">
-					<table class="table table-hover table-sm">
+					<table class="table table-hover table-sm" id="foodTable">
 						<thead>
-						<tr>
-							<th scope="col">#</th>
-							<th scope="col">食物名稱</th>
-							<th scope="col">卡路里(Kcal)</th>
-						</tr>
+							<tr>
+								<th scope="col">食物名稱</th>
+								<th scope="col">份量</th>
+								<th scope="col">卡路里(Kcal)</th>
+							</tr>
 						</thead>
-						<tbody>
-						<tr>
-							<th scope="row">1</th>
-							<td>香蕉</td>
-							<td>100</td>
-						</tr>
-						<tr>
-							<th scope="row">2</th>
-							<td>拉麵</td>
-							<td>1200</td>
-						</tr>
-						<tr>
-							<th scope="row">3</th>
-							<td>草莓麵包</td>
-							<td>500</td>
-						</tr>
-						<tr>
-							<th scope="row">總共攝取</th>
-							<th  colspan="2">1800</th>
-						</tr>
-						</tbody>
+						<tbody id="foodTableBody"></tbody>
 					</table>
 				</div>
 				<p>您今天運動了:</p>
 				<div class="table-responsive" >
-					<table class="table table-hover table-sm">
+					<table class="table table-hover table-sm" id="ExerciseTable">
 						<thead>
-						<tr>
-							<th scope="col">#</th>
-							<th scope="col">運動名稱</th>
-							<th scope="col">消耗卡路里(Kcal)</th>
-							<th scope="col">運動時間(min)</th>
-						</tr>
+							<tr>
+								<th scope="col">運動名稱</th>
+								<th scope="col">運動時間</th>
+								<th scope="col">卡路里(Kcal)</th>
+							</tr>
 						</thead>
-						<tbody>
-						<tr>
-							<th scope="row">1</th>
-							<td>慢跑</td>
-							<td>1000</td>
-							<td>30</td>
-						</tr>
-						<tr>
-							<th scope="row">2</th>
-							<td>游泳</td>
-							<td>600</td>
-							<td>15</td>
-						</tr>
-						<tr>
-							<th scope="row">3</th>
-							<td>健走</td>
-							<td>120</td>
-							<td>60</td>
-						</tr>
-						<tr>
-							<th scope="row">總共消耗</th>
-							<th colspan="3">1720</th>
-						</tr>
-						</tbody>
+						<tbody id="ExerciseTableBody"></tbody>
 					</table>
 				</div>
 			</div>
@@ -117,7 +73,7 @@
 			<div class="rightDiv">
 				<h2>體重計錄</h2>
 				<p>今日剩餘消耗卡路里:</p>
-				<p>1800 - 1720 = 80 (Kcal)</p>
+				<p id="remainingCalories"></p>
 				<p>一週體重報表:</p>
 				<canvas id="BMIChart"></canvas>
 			</div>

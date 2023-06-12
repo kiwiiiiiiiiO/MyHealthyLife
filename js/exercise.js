@@ -1,5 +1,5 @@
 var selectedDate = null;
-var selectedMonth = 5;
+var selectedMonth = 6;
 var selectedYear = 2023;
 var totalCalories = 0; // Variable to store the total calories
 // 建立日曆
@@ -83,37 +83,37 @@ function selectDate(cell) {
 
     selectedDate = date;
     fetch(`../database/GetExercise.php?date=${selectedYear + '-' + selectedMonth + '-' + date}`)
-    .then(response => response.json())
-    .then(data => {
-        const foodTableBody = document.getElementById("foodTableBody");
-        foodTableBody.innerHTML = ""; // Clear the table body
+        .then(response => response.json())
+        .then(data => {
+            const foodTableBody = document.getElementById("foodTableBody");
+            foodTableBody.innerHTML = ""; // Clear the table body
 
-       
-        totalCalories = 0; 
-        // Loop through the data and create table rows
-        data.forEach(row => {
-            if (row.date === `${selectedYear}-${selectedMonth.toString().padStart(2, '0')}-${date.toString().padStart(2, '0')}`) {
-                const tableRow = document.createElement("tr");
-                tableRow.innerHTML = `
+
+            totalCalories = 0;
+            // Loop through the data and create table rows
+            data.forEach(row => {
+                if (row.date === `${selectedYear}-${selectedMonth.toString().padStart(2, '0')}-${date.toString().padStart(2, '0')}`) {
+                    const tableRow = document.createElement("tr");
+                    tableRow.innerHTML = `
                     <td>${row.date}</td>
                     <td>${row.exercise_name}</td>
                     <td>${row.time}</td>
                     <td>${row.calories}</td>
                     <td><button onclick="deleteFood(${row.exercise_id})">Delete</button></td>
                 `;
-                foodTableBody.appendChild(tableRow);
+                    foodTableBody.appendChild(tableRow);
 
-                totalCalories += parseInt(row.calories); // Add the calories to the total using parseInt to convert to an integer
-            } else {
-                const tableRow = document.createElement("tr");
-                tableRow.style.display = "none";
-                foodTableBody.appendChild(tableRow);
-            }
-        });
-        const totalCaloriesElement = document.getElementById("totalCalory");
-        totalCaloriesElement.innerText = `總熱量: ${totalCalories} 大卡`; // Set the inner text of the element to display the total calories
-    })
-    .catch(error => console.error('Error:', error));
+                    totalCalories += parseInt(row.calories); // Add the calories to the total using parseInt to convert to an integer
+                } else {
+                    const tableRow = document.createElement("tr");
+                    tableRow.style.display = "none";
+                    foodTableBody.appendChild(tableRow);
+                }
+            });
+            const totalCaloriesElement = document.getElementById("totalCalory");
+            totalCaloriesElement.innerText = `總熱量: ${totalCalories} 大卡`; // Set the inner text of the element to display the total calories
+        })
+        .catch(error => console.error('Error:', error));
 
     // 隱藏其他日期的食物
     var foodRows = document.getElementsById("foodTable");
@@ -142,7 +142,7 @@ function changeCalendar() {
 }
 
 // 建立初始表格
-createCalendar(2023, 5);
+createCalendar(2023, 6);
 
 // **********************************************************************************************************
 
@@ -196,15 +196,22 @@ function addFood() {
         .catch(error => {
             console.error('Error:', error);
         });
-        closeModal();
+    closeModal();
 }
 
 // 刪除食物
-// function deleteRow(row) {
-//     var table = document.getElementById("foodTable");
-//     var rowIndex = row.rowIndex;
-//     table.deleteRow(rowIndex);
-// }
+function deleteFood(id) {
+    fetch("../database/DeleteExercise.php?id=" + id)
+        .then(response => response.text())
+        .then(result => {
+            console.log(result);
+            fetchExerciseData(); // Refresh the table data
+        })
+        .catch(error => console.error('Error:', error));
+}
+
+// Call the function to fetch and display food data
+fetchExerciseData();
 
 //總熱量
 // function totalCalory(caloriesCell) {
